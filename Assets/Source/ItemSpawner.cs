@@ -20,7 +20,7 @@ public class ItemSpawner : Interactable
         if (player.IsHoldingItem() == false)
         {
             var newItem = Instantiate(itemPrefab);
-            player.HoldItem(newItem.GetComponent<Item>());
+            Utils.HoldAction(player, newItem.GetComponent<Item>());
         }
     }
 }

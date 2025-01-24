@@ -1,31 +1,32 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public enum ItemType
 {
     FRUIT = 1,
-    POT = 2
+    POT = 2,
+    COAL = 3,
 }
 
 public enum FruitType
 {
-    STRAWBERRY = 1,
+    STRAWBERRY = 1
 }
 
 [RequireComponent(typeof(Rigidbody))]
 public class Item : Interactable, IItemHolder
 {
     public Collider collider;
+
     public ItemType itemType;
     public FruitType fruitType;
 
-
-    public Item potItem;
+    [FormerlySerializedAs("potItem")] [HideInInspector] public Item itemInPot;
+    [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public float cookingTimer = 0;
 
     private IItemHolder myHolder;
-    [HideInInspector] public Rigidbody rigidbody;
-    private ItemType type;
 
     void Awake()
     {
@@ -33,11 +34,11 @@ public class Item : Interactable, IItemHolder
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (itemType == ItemType.POT && potItem != null)
+        if (itemType == ItemType.POT && itemInPot != null)
         {
-            potItem.transform.position = transform.position;
+            itemInPot.transform.position = transform.position;
         }
     }
 
@@ -51,12 +52,16 @@ public class Item : Interactable, IItemHolder
     {
         myHolder = holder;
 
+        Debug.Log("triggered");
+        
         if (myHolder != null)
         {
+            Debug.Log("trigger true");
             collider.isTrigger = true;
         }
         else
         {
+            Debug.Log("trigger false");
             collider.isTrigger = false;
         }
     }
@@ -70,15 +75,19 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT && player.IsHoldingItem())
         {
-            if (player.holdedItem.type == ItemType.FRUIT)
+            if (player.holdedItem.itemType == ItemType.FRUIT)
             {
                 player.SwapWith(this);
+                this.itemInPot.transform.position = transform.position;
             }
         }
         else if (IsHolded() == false && player.IsHoldingItem() == false)
         {
-            player.HoldItem(this);
             SetHoldedBy(player);
+            player.HoldItem(this);
+        }
+        else
+        {
         }
     }
 
@@ -86,7 +95,7 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT)
         {
-            potItem = item;
+            itemInPot = item;
         }
         else
         {
@@ -98,8 +107,8 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT)
         {
-            var temp = potItem;
-            potItem = null;
+            var temp = itemInPot;
+            itemInPot = null;
             return temp;
         }
         else

@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c2c012d1dd23e49b672b01dcbe4ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: 94f2ccff74b111147abe00f287bb42fb, type: 2}
   label: {fileID: 1629954852}
   holdedItem: {fileID: 0}
 --- !u!1 &157262870
@@ -201,7 +202,7 @@ GameObject:
   - component: {fileID: 157262874}
   - component: {fileID: 157262873}
   - component: {fileID: 157262872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,8 +262,8 @@ MonoBehaviour:
   itemType: 2
   fruitType: 0
   potItem: {fileID: 0}
-  cookingTimer: 0
   rigidbody: {fileID: 0}
+  cookingTimer: 0
 --- !u!54 &157262874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -439,7 +440,7 @@ Transform:
   m_GameObject: {fileID: 273967562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -767,7 +768,7 @@ GameObject:
   - component: {fileID: 427771288}
   - component: {fileID: 427771290}
   - component: {fileID: 427771289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

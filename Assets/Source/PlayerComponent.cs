@@ -100,21 +100,17 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
         if (input.IsInteracting() && gotInteractable)
         {
+            Debug.Log($"interacting with: {interactable.gameObject.name}");
             interactable.Interact(this);
         }
-
-        if (input.IsThrowing(out var timer) && IsHoldingItem())
+        else if (input.IsThrowing(out var timer) && IsHoldingItem())
         {
-            holdedItem.FreeSelf();
-            
             if (timer > THROW_HOLD_THRESHOLD_IN_SECONDS)
             {
                 ThrowItem(Mathf.Min(timer, THROW_MAX_HOLD_IN_SECONDS) / THROW_MAX_HOLD_IN_SECONDS);
             }
-            else
-            {
-                ReleaseItem();
-            }
+            
+            Utils.DisholdItem(this, holdedItem);
         }
 
         if (holdedItem != null)
@@ -128,8 +124,6 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         float power = 4 * powerNormal;
         Vector3 powerVector = castRayDireaction.normalized;
         holdedItem.rigidbody.AddForce(THROW_POWER * powerNormal * powerVector);
-
-        holdedItem = null;
     }
 
     bool TryGetNearestInteractable(out Interactable interactable)
