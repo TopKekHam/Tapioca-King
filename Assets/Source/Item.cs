@@ -77,7 +77,7 @@ public class Item : Interactable, IItemHolder
         {
             if (player.holdedItem.itemType == ItemType.FRUIT)
             {
-                player.SwapWith(this);
+                player.GiveItemTo(this);
                 this.itemInPot.transform.position = transform.position;
             }
         }

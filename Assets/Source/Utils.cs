@@ -1,7 +1,9 @@
+using UnityEditor;
+
 public static class Utils
 {
 
-    public static void SwapWith(this IItemHolder from, IItemHolder to)
+    public static void GiveItemTo(this IItemHolder from, IItemHolder to)
     {
         var item = from.ReleaseItem();
         item.SetHoldedBy(to);
@@ -18,6 +20,11 @@ public static class Utils
     {
         item.FreeSelf();
         holder.ReleaseItem();
+    }
+
+    public static bool Cookable(this ItemType itemType)
+    {
+        return itemType == ItemType.FRUIT;
     }
     
 }

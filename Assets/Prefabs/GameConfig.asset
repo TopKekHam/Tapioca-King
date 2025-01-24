@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9015ca54b798644bb9da5e97e16195, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  fruitCookTime: 7.5
-  burnTime: 2
+  fruitCookTime: 5
+  burnTime: 10
   coal: {fileID: 4866963064548104607, guid: a519c70805cb94b4f9334f0f83cb1931, type: 3}

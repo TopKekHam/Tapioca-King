@@ -21,11 +21,11 @@ public class CookingStove : Interactable, IItemHolder
 
     void Update()
     {
-        if (pot != null && pot.itemInPot != null)
+        if (pot != null)
         {
             pot.transform.position = transform.position;
 
-            if (pot.itemInPot.itemType == ItemType.FRUIT)
+            if (pot.itemInPot != null && pot.itemInPot.itemType.Cookable())
             {
                 pot.itemInPot.cookingTimer += Time.deltaTime;
                 bool done = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime;
@@ -49,7 +49,7 @@ public class CookingStove : Interactable, IItemHolder
             label.text = "";
         }
     }
-    
+
     public override void Interact(PlayerComponent player)
     {
         if (pot == null && player.IsHoldingItem())
@@ -61,9 +61,16 @@ public class CookingStove : Interactable, IItemHolder
                 pot.SetHoldedBy(this);
             }
         }
-        else if (pot != null && player.IsHoldingItem() == false)
+        else if (pot != null)
         {
-            this.SwapWith(player);
+            if (player.IsHoldingItem() == false)
+            {
+                this.GiveItemTo(player);
+            }
+            else if (player.holdedItem.itemType.Cookable() && pot.itemInPot == null)
+            {
+                player.GiveItemTo(pot);
+            }
         }
     }
 
