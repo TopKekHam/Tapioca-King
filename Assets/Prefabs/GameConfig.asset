@@ -18,3 +18,110 @@ MonoBehaviour:
   choopsToCutFruit: 10
   choopedVersions:
   - {fileID: 4866963064548104607, guid: 4ec7a4a1f1e30514bac7d490b02ccc87, type: 3}
+  filmentMaterials:
+  - filment:
+      itemType: 1
+      fruitType: 1
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 1
+      fruitType: 2
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 1
+      fruitType: 3
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 3
+      fruitType: 3
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 4
+      fruitType: 1
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 4
+      fruitType: 2
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 4
+      fruitType: 3
+      milkType: 0
+      teaType: 0
+    material: {fileID: 0}
+  - filment:
+      itemType: 6
+      fruitType: 2
+      milkType: 0
+      teaType: 1
+    material: {fileID: 0}
+  - filment:
+      itemType: 6
+      fruitType: 2
+      milkType: 0
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 6
+      fruitType: 2
+      milkType: 0
+      teaType: 3
+    material: {fileID: 0}
+  - filment:
+      itemType: 8
+      fruitType: 2
+      milkType: 1
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 8
+      fruitType: 1
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 9
+      fruitType: 1
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 9
+      fruitType: 2
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 9
+      fruitType: 3
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 10
+      fruitType: 3
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  - filment:
+      itemType: 11
+      fruitType: 3
+      milkType: 2
+      teaType: 2
+    material: {fileID: 0}
+  filmentPrefabs:
+  - {fileID: 3079405498780794969, guid: 9f26f83056f6b7d4c868d2c8a4bf2f8e, type: 3}
+  - {fileID: 6125155721189709589, guid: 4bc4a52238539a240b9fa00993e97686, type: 3}
+  - {fileID: 5504617689357641948, guid: 86e87e5e05f63e24da53f9bfc0510be6, type: 3}
