@@ -1,6 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+
+[Serializable]
+public class CupFilmentMaterial
+{
+    public CupFilment filment;
+    public Material material;
+}
 
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObjects/GameConfig", order = 1)]
 public class GameConfig : ScriptableObject
@@ -12,6 +20,7 @@ public class GameConfig : ScriptableObject
     public int choopsToCutFruit = 10;
 
     public Item[] choopedVersions;
+    public CupFilmentMaterial[] filments;
     
     public Item GetFruitChoopedVersion(FruitType type)
     {
@@ -24,6 +33,19 @@ public class GameConfig : ScriptableObject
         }
         
         Debug.Assert(false);
+        return null;
+    }
+
+    public Material GetFilmentMaterial(CupFilment filment)
+    {
+        foreach (var f in filments)
+        {
+            if (f.filment.Equals(filment))
+            {
+                return f.material;
+            }
+        }
+        
         return null;
     }
     

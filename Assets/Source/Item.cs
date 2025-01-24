@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,11 +10,55 @@ public enum ItemType
     POT = 2,
     COAL = 3,
     CHOOPED_FRUIT = 4,
+    CUP = 5,
+    TEA = 6,
+    KETTLE = 7,
+    MILK = 8,
+    COOKED_FRUIT = 9,
 }
 
 public enum FruitType
 {
-    STRAWBERRY = 1
+    STRAWBERRY = 1,
+    BLUEBERRY = 2,
+    BANANA = 3
+}
+
+public enum TeaType
+{
+    JASMINE = 1,
+    MATCHA = 2,
+    EARL_GREY = 3
+}
+
+public enum MilkType
+{
+    COW = 1,
+    SOY = 2
+}
+
+[Serializable]
+public class CupFilment
+{
+    public ItemType itemType;
+    public FruitType fruitType;
+    public MilkType milkType;
+    public TeaType teaType;
+
+    public bool Equals(CupFilment other)
+    {
+        if (itemType == other.itemType)
+        {
+            switch (itemType)
+            {
+                case ItemType.MILK: return milkType == other.milkType;
+                case ItemType.TEA: return teaType == other.teaType;
+                case ItemType.COOKED_FRUIT: return fruitType == other.fruitType;
+            }
+        }
+
+        return false;
+    }
 }
 
 [RequireComponent(typeof(Rigidbody))]
@@ -22,8 +68,12 @@ public class Item : Interactable, IItemHolder
 
     public ItemType itemType;
     public FruitType fruitType;
+    public TeaType teaType;
+    public MilkType milkType;
 
-    [FormerlySerializedAs("potItem")] [HideInInspector] public Item itemInPot;
+    [HideInInspector] public CupFilment[] filments = new CupFilment[3];
+    [HideInInspector] public int filmentsLength = 0;
+    [HideInInspector] public Item itemInPot;
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public float cookingTimer = 0;
 
@@ -54,7 +104,7 @@ public class Item : Interactable, IItemHolder
         myHolder = holder;
 
         Debug.Log("triggered");
-        
+
         if (myHolder != null)
         {
             Debug.Log("trigger true");
@@ -82,13 +132,14 @@ public class Item : Interactable, IItemHolder
                 this.itemInPot.transform.position = transform.position;
             }
         }
+        else if (itemType == ItemType.CUP && player.IsHoldingItem())
+        {
+            
+        }
         else if (IsHolded() == false && player.IsHoldingItem() == false)
         {
             SetHoldedBy(player);
             player.HoldItem(this);
-        }
-        else
-        {
         }
     }
 
@@ -117,5 +168,35 @@ public class Item : Interactable, IItemHolder
             Debug.Assert(false);
             return null;
         }
+    }
+
+    public CupFilment CreateFilment()
+    {
+        Debug.Assert(itemType == ItemType.TEA || itemType == ItemType.COOKED_FRUIT || itemType == ItemType.MILK);
+        
+        CupFilment filment = new CupFilment();
+        filment.itemType = itemType;
+
+        switch (filment.itemType)
+        {
+            case ItemType.MILK: filment.milkType = milkType; break;
+            case ItemType.TEA: filment.teaType = teaType; break;
+            case ItemType.COOKED_FRUIT: filment.fruitType = fruitType; break;
+        }
+
+        return filment;
+    }
+
+    public bool CanAddFilment()
+    {
+        return filmentsLength < 3;
+    }
+    
+    public void AddFilment(CupFilment filment)
+    {
+        if (CanAddFilment() == false) return;
+        
+        filments[filmentsLength] = filment;
+        filmentsLength += 1;
     }
 }
