@@ -20,9 +20,12 @@ public class GameConfig : ScriptableObject
     public Item coal;
     public int choopsToCutFruit = 10;
 
+    public int maxConcurentOrders;
+    public float[] orderTimers;
     public Item[] choopedVersions;
     public CupFilmentMaterial[] filmentMaterials;
     public GameObject[] filmentPrefabs;
+    
     
     public Item GetFruitChoopedVersion(FruitType type)
     {

@@ -24,7 +24,7 @@ public static class Utils
 
     public static bool Cookable(this ItemType itemType)
     {
-        return itemType == ItemType.CHOOPED_FRUIT;
+        return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
     }
 
     public static void LockFromChooping(this ChoopingBoard board, PlayerComponent playerComponent)

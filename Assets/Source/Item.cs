@@ -56,6 +56,7 @@ public class CupFilment
                 case ItemType.MILK: return milkType == other.milkType;
                 case ItemType.TEA: return teaType == other.teaType;
                 case ItemType.COOKED_FRUIT: return fruitType == other.fruitType;
+                case ItemType.COOKED_TAPIOCA: return true;
             }
         }
 
