@@ -15,6 +15,8 @@ public enum ItemType
     KETTLE = 7,
     MILK = 8,
     COOKED_FRUIT = 9,
+    TAPIOCA = 10,
+    COOKED_TAPIOCA = 11,
 }
 
 public enum FruitType
