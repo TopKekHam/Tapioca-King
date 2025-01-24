@@ -88,11 +88,15 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     private Vector3 castRayDireaction = Vector3.left;
     private ChoopingBoard choopingBoard;
 
+    Animator characterAnim;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         input = new PlayerKeyboardInput();
         iteractableLayer = LayerMask.GetMask("Interactable");
+
+        characterAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -132,6 +136,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         {
             UpdateHoldedItemPosition();
         }
+
     }
 
     public bool IsChooping()
@@ -193,11 +198,15 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
             accelerationTimer = Math.Min(accelerationTimer, ACCEL_CURVE.keys[^1].value);
 
             rigidbody.linearVelocity = moveDir * SPEED * ACCEL_CURVE.Evaluate(accelerationTimer);
+
+            characterAnim.SetBool("Flying", true);
         }
         else
         {
             accelerationTimer -= Time.fixedDeltaTime;
             accelerationTimer = Math.Max(accelerationTimer, 0);
+
+            characterAnim.SetBool("Flying", false);
         }
     }
 
