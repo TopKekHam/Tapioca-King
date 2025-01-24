@@ -38,5 +38,9 @@ public static class Utils
         board.UnlockPlayer();
         playerComponent.UnlookChooping();
     }
-    
+
+    public static bool IsFilment(this ItemType itemType)
+    {
+        return itemType == ItemType.TEA || itemType == ItemType.MILK || itemType == ItemType.COOKED_FRUIT;
+    }
 }

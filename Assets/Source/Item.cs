@@ -70,6 +70,8 @@ public class Item : Interactable, IItemHolder
     public FruitType fruitType;
     public TeaType teaType;
     public MilkType milkType;
+    
+    public float[] filmentHeightOffest = new float[3];
 
     [HideInInspector] public CupFilment[] filments = new CupFilment[3];
     [HideInInspector] public int filmentsLength = 0;
@@ -91,6 +93,12 @@ public class Item : Interactable, IItemHolder
         {
             itemInPot.transform.position = transform.position;
         }
+    }
+
+
+    public bool PotIsFull()
+    {
+        return itemInPot != null;
     }
 
     public void FreeSelf()
@@ -132,9 +140,26 @@ public class Item : Interactable, IItemHolder
                 this.itemInPot.transform.position = transform.position;
             }
         }
-        else if (itemType == ItemType.CUP && player.IsHoldingItem())
+        else if (itemType == ItemType.CUP && CanAddFilment() && player.IsHoldingItem())
         {
-            
+            if (player.holdedItem.itemType.IsFilment())
+            {
+                var item = player.ReleaseItem();
+                AddFilment(item.CreateFilment());
+                Destroy(item.gameObject);
+            }
+            else if (player.holdedItem.itemType == ItemType.POT
+                     && player.holdedItem.PotIsFull()
+                     && player.holdedItem.itemInPot.itemType.IsFilment())
+            {
+                var item = player.holdedItem.ReleaseItem();
+                AddFilment(item.CreateFilment());
+                Destroy(item.gameObject);
+            }
+            else
+            {
+                // can't fill
+            }
         }
         else if (IsHolded() == false && player.IsHoldingItem() == false)
         {
@@ -172,8 +197,8 @@ public class Item : Interactable, IItemHolder
 
     public CupFilment CreateFilment()
     {
-        Debug.Assert(itemType == ItemType.TEA || itemType == ItemType.COOKED_FRUIT || itemType == ItemType.MILK);
-        
+        Debug.Assert(itemType.IsFilment());
+
         CupFilment filment = new CupFilment();
         filment.itemType = itemType;
 
@@ -191,12 +216,21 @@ public class Item : Interactable, IItemHolder
     {
         return filmentsLength < 3;
     }
-    
+
     public void AddFilment(CupFilment filment)
     {
         if (CanAddFilment() == false) return;
-        
+
         filments[filmentsLength] = filment;
+
+        var config = GameManager.instance.gameConfig;
+        
+        var obj = config.InstantiateFilment(filmentsLength, filment);
+
+        
+        obj.transform.parent = transform;
+        obj.transform.localPosition = new Vector3(0, filmentHeightOffest[filmentsLength], 0);
+        
         filmentsLength += 1;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class CupFilmentMaterial
@@ -20,7 +21,8 @@ public class GameConfig : ScriptableObject
     public int choopsToCutFruit = 10;
 
     public Item[] choopedVersions;
-    public CupFilmentMaterial[] filments;
+    public CupFilmentMaterial[] filmentMaterials;
+    public GameObject[] filmentPrefabs;
     
     public Item GetFruitChoopedVersion(FruitType type)
     {
@@ -36,9 +38,20 @@ public class GameConfig : ScriptableObject
         return null;
     }
 
+    public GameObject InstantiateFilment(int number, CupFilment filment)
+    {
+        var prefab = filmentPrefabs[number];
+        
+        var obj = GameObject.Instantiate(prefab);
+        var renderer = obj.GetComponent<MeshRenderer>();
+        renderer.sharedMaterials[0] = GetFilmentMaterial(filment);
+
+        return obj;
+    }
+    
     public Material GetFilmentMaterial(CupFilment filment)
     {
-        foreach (var f in filments)
+        foreach (var f in filmentMaterials)
         {
             if (f.filment.Equals(filment))
             {
