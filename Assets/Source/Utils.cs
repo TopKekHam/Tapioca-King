@@ -10,7 +10,7 @@ public static class Utils
         to.HoldItem(item);
     }
 
-    public static void HoldAction(IItemHolder holder, Item item)
+    public static void HoldAction(this IItemHolder holder, Item item)
     {
         item.SetHoldedBy(holder);
         holder.HoldItem(item);
@@ -24,7 +24,19 @@ public static class Utils
 
     public static bool Cookable(this ItemType itemType)
     {
-        return itemType == ItemType.FRUIT;
+        return itemType == ItemType.CHOOPED_FRUIT;
+    }
+
+    public static void LockFromChooping(this ChoopingBoard board, PlayerComponent playerComponent)
+    {
+        board.LockPlayer(playerComponent);
+        playerComponent.LockChooping(board);
+    }
+    
+    public static void ReleaseFromChooping(this ChoopingBoard board, PlayerComponent playerComponent)
+    {
+        board.UnlockPlayer();
+        playerComponent.UnlookChooping();
     }
     
 }

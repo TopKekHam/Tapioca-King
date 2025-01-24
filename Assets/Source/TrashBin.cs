@@ -5,7 +5,7 @@ public class TrashBin : Interactable
     
     public override void Interact(PlayerComponent player)
     {
-        if (player.holdedItem.itemType == ItemType.POT && player.holdedItem != null)
+        if (player.holdedItem.itemType == ItemType.POT && player.holdedItem.itemInPot != null)
         {
             var item = player.holdedItem.itemInPot;
             Utils.DisholdItem(player.holdedItem, player.holdedItem.itemInPot);

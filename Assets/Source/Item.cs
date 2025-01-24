@@ -7,6 +7,7 @@ public enum ItemType
     FRUIT = 1,
     POT = 2,
     COAL = 3,
+    CHOOPED_FRUIT = 4,
 }
 
 public enum FruitType
@@ -34,7 +35,7 @@ public class Item : Interactable, IItemHolder
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (itemType == ItemType.POT && itemInPot != null)
         {
@@ -75,7 +76,7 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT && player.IsHoldingItem())
         {
-            if (player.holdedItem.itemType == ItemType.FRUIT)
+            if (player.holdedItem.itemType.Cookable())
             {
                 player.GiveItemTo(this);
                 this.itemInPot.transform.position = transform.position;

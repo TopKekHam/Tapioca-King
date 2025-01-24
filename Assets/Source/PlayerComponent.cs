@@ -3,6 +3,7 @@ using System.Numerics;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -11,7 +12,7 @@ public interface IPlayerInput
 {
     Vector3 GetMovementDirection();
     bool IsInteracting();
-    bool IsThrowing(out float timer);
+    bool IsAction2(out float timer);
 }
 
 public class PlayerKeyboardInput : IPlayerInput
@@ -50,7 +51,7 @@ public class PlayerKeyboardInput : IPlayerInput
         return Input.GetKeyDown(KeyCode.Space);
     }
 
-    public bool IsThrowing(out float timer)
+    public bool IsAction2(out float timer)
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -82,10 +83,10 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     float accelerationTimer = 0;
     Rigidbody rigidbody;
     IPlayerInput input;
-    [HideInInspector]
-    public Item holdedItem;
+    [HideInInspector] public Item holdedItem;
     int iteractableLayer;
     private Vector3 castRayDireaction = Vector3.left;
+    private ChoopingBoard choopingBoard;
 
     void Start()
     {
@@ -98,19 +99,33 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         var gotInteractable = TryGetNearestInteractable(out var interactable);
 
-        if (input.IsInteracting() && gotInteractable)
+        if (input.IsInteracting())
         {
-            Debug.Log($"interacting with: {interactable.gameObject.name}");
-            interactable.Interact(this);
-        }
-        else if (input.IsThrowing(out var timer) && IsHoldingItem())
-        {
-            if (timer > THROW_HOLD_THRESHOLD_IN_SECONDS)
+            if (IsChooping())
             {
-                ThrowItem(Mathf.Min(timer, THROW_MAX_HOLD_IN_SECONDS) / THROW_MAX_HOLD_IN_SECONDS);
+                choopingBoard.Choop();
             }
-            
-            Utils.DisholdItem(this, holdedItem);
+            else if (gotInteractable)
+            {
+                Debug.Log($"interacting with: {interactable.gameObject.name}");
+                interactable.Interact(this);
+            }
+        }
+        else if (input.IsAction2(out var timer))
+        {
+            if (IsChooping())
+            {
+                choopingBoard.ReleaseFromChooping(this);
+            }
+            else if (IsHoldingItem())
+            {
+                if (timer > THROW_HOLD_THRESHOLD_IN_SECONDS)
+                {
+                    ThrowItem(Mathf.Min(timer, THROW_MAX_HOLD_IN_SECONDS) / THROW_MAX_HOLD_IN_SECONDS);
+                }
+
+                Utils.DisholdItem(this, holdedItem);
+            }
         }
 
         if (holdedItem != null)
@@ -118,6 +133,12 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
             UpdateHoldedItemPosition();
         }
     }
+
+    public bool IsChooping()
+    {
+        return choopingBoard != null;
+    }
+
 
     void ThrowItem(float powerNormal)
     {
@@ -164,7 +185,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         var moveDir = input.GetMovementDirection();
 
-        if (moveDir != Vector3.zero)
+        if (moveDir != Vector3.zero && IsChooping() == false)
         {
             castRayDireaction = moveDir.normalized;
 
@@ -190,7 +211,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         holdedItem = item;
         UpdateHoldedItemPosition();
     }
-    
+
     public Item ReleaseItem()
     {
         var temp = holdedItem;
@@ -203,5 +224,16 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward);
         Gizmos.DrawLine(transform.position, transform.position + (castRayDireaction * RAY_CAST_SIZE));
+    }
+
+    public void LockChooping(ChoopingBoard board)
+    {
+        choopingBoard = board;
+        rigidbody.linearVelocity = Vector3.zero;
+    }
+
+    public void UnlookChooping()
+    {
+        choopingBoard = null;
     }
 }
