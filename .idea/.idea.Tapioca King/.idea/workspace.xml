@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Box.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Box.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/CookingStove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/CookingStove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/PlayerComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/PlayerComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/TrashBin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/TrashBin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Utils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Source/GameConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Table.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/91aa50f2e703411fbb05bdf5832f909e2ac00/55/7b1aa395/Physics.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -110,7 +101,7 @@
       <workItem from="1737667357448" duration="2983000" />
       <workItem from="1737707375706" duration="12480000" />
       <workItem from="1737726671927" duration="1470000" />
-      <workItem from="1737728229965" duration="8517000" />
+      <workItem from="1737728229965" duration="9031000" />
     </task>
     <servers />
   </component>
