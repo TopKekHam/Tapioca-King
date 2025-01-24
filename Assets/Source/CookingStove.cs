@@ -13,6 +13,7 @@ public class CookingStove : Interactable, IItemHolder
 {
     public GameConfig gameConfig;
     public TMP_Text label;
+    public Transform itemOrigin;
     [HideInInspector] public Item pot;
 
     void Start()
@@ -23,8 +24,6 @@ public class CookingStove : Interactable, IItemHolder
     {
         if (pot != null)
         {
-            pot.transform.position = transform.position;
-
             if (pot.itemInPot != null && pot.itemInPot.itemType.Cookable())
             {
                 pot.itemInPot.cookingTimer += Time.deltaTime;
@@ -79,7 +78,8 @@ public class CookingStove : Interactable, IItemHolder
     public void HoldItem(Item item)
     {
         pot = item;
-        pot.transform.position = transform.position;
+        pot.transform.position = itemOrigin.position;
+        pot.rigidbody.linearVelocity = Vector3.zero;
     }
 
     public Item ReleaseItem()
