@@ -2184,6 +2184,8 @@ MonoBehaviour:
   audioSource: {fileID: 632563019}
   audioGameOver: {fileID: 8300000, guid: b3525a1e9ce44434d958d8f89ce686a8, type: 3}
   audioGameOverAboutToBeOver: {fileID: 8300000, guid: 37156d94d563b894db2a9cb7ea00abd3, type: 3}
+  audioGoodDrink: {fileID: 8300000, guid: e16ddc92c96f83940ad07a064eec74ee, type: 3}
+  audioBadDrink: {fileID: 8300000, guid: 5a332a8a87fe35146b02721841ff60b2, type: 3}
   winPanel: {fileID: 1709077595}
   lostPanel: {fileID: 1928342374}
   playerCount: 0

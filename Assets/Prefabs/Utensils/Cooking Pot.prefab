@@ -200,7 +200,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.25, y: 1.25, z: 1.25}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8352790321199307667
 MonoBehaviour:
@@ -238,8 +238,10 @@ MonoBehaviour:
     teaType: 0
   filmentsLength: 0
   itemInPot: {fileID: 0}
+  itemInKettle: {fileID: 0}
   rigidbody: {fileID: 0}
   cookingTimer: 0
+  steepingTimer: 0
   filmentParent: {fileID: 1921412198467543384}
 --- !u!95 &1410048052167340423
 Animator:

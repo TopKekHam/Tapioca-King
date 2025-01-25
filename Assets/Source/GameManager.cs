@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioGameOver;
     public AudioClip audioGameOverAboutToBeOver;
+    public AudioClip audioGoodDrink;
+    public AudioClip audioBadDrink;
     public GameObject winPanel, lostPanel;
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
@@ -178,11 +180,13 @@ public class GameManager : MonoBehaviour
 
     void AnimateGoodDrinkServed()
     {
+        GameManager.PlaySingle(audioGoodDrink);
         Debug.Log("Animating good drink served");
     }
 
     void AnimateWrongDrinkServed()
     {
+        GameManager.PlaySingle(audioBadDrink);
         Debug.Log("Animate wrong drink served");
     }
 
