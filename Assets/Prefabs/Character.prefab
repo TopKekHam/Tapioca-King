@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4866963064548104607, guid: 77f9ab464635c81498cf2ea495638108, type: 3}
-  SPEED: 2.5
+  SPEED: 5
   THROW_POWER: 250
   THROW_MAX_HOLD_IN_SECONDS: 2
   THROW_HOLD_THRESHOLD_IN_SECONDS: 0.33

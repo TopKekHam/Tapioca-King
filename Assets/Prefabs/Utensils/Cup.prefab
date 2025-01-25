@@ -147,7 +147,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &4002361791380544335
 MonoBehaviour:
@@ -187,6 +187,7 @@ MonoBehaviour:
   itemInPot: {fileID: 0}
   rigidbody: {fileID: 0}
   cookingTimer: 0
+  filmentParent: {fileID: 8575299793084781867}
 --- !u!135 &7336417913098706316
 SphereCollider:
   m_ObjectHideFlags: 0

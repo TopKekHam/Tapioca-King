@@ -136,24 +136,24 @@ public class GameManager : MonoBehaviour
 
         int teaOrMilk = Random.Range(0, 2);
 
-        if (teaOrMilk == 0)
-        {
-            // tea
-            orderToFill.filments[0] = new CupFilment()
-            {
-                itemType = ItemType.TEA,
-                teaType = (TeaType)Random.Range(1, 4),
-            };
-        }
-        else
-        {
+        //if (teaOrMilk == 0)
+        //{
+        //    // tea
+        //    orderToFill.filments[0] = new CupFilment()
+        //    {
+        //        itemType = ItemType.STEEPED_TEA,
+        //        teaType = (TeaType)Random.Range(1, 4),
+        //    };
+        //}
+        //else
+        //{
             // milk
-            orderToFill.filments[0] = new CupFilment()
+            orderToFill.filments[2] = new CupFilment()
             {
                 itemType = ItemType.MILK,
                 milkType = (MilkType)Random.Range(1, 3),
             };
-        }
+        //}
 
         orderToFill.filments[1] = new CupFilment()
         {
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
             fruitType = (FruitType)Random.Range(1, 4),
         };
 
-        orderToFill.filments[2] = new CupFilment()
+        orderToFill.filments[0] = new CupFilment()
         {
             itemType = ItemType.COOKED_TAPIOCA,
         };

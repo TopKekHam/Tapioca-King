@@ -24,7 +24,7 @@ public static class Utils
 
     public static bool Cookable(this ItemType itemType)
     {
-        return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
+        return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.TAPIOCA;
     }
 
     public static void LockFromChooping(this ChoopingBoard board, PlayerComponent playerComponent)
@@ -41,6 +41,6 @@ public static class Utils
 
     public static bool IsFilment(this ItemType itemType)
     {
-        return itemType == ItemType.TEA || itemType == ItemType.MILK || itemType == ItemType.COOKED_FRUIT;
+        return itemType == ItemType.STEEPED_TEA || itemType == ItemType.MILK || itemType == ItemType.COOKED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
     }
 }
