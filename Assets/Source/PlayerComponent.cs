@@ -82,7 +82,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
     float accelerationTimer = 0;
     Rigidbody rigidbody;
-    IPlayerInput input;
+    [HideInInspector] public IPlayerInput input;
     [HideInInspector] public Item holdedItem;
     int iteractableLayer;
     private Vector3 castRayDireaction = Vector3.left;
@@ -93,7 +93,6 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        input = new PlayerKeyboardInput();
         iteractableLayer = LayerMask.GetMask("Interactable");
 
         characterAnim = GetComponent<Animator>();
