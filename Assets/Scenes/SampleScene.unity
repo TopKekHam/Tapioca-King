@@ -2752,6 +2752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 9139061295413770498, guid: 513809c492c0f9a4a9cc0f95b2ce2281, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 4866963064548104607, guid: 993785d610a218e4c9473e1b3ada8fc4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

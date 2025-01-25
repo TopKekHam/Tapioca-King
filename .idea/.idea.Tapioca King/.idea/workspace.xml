@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/PlayerComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/PlayerComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/PlayerSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
-    </list>
+    <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +102,7 @@
       <workItem from="1737707375706" duration="12480000" />
       <workItem from="1737726671927" duration="1470000" />
       <workItem from="1737728229965" duration="26053000" />
-      <workItem from="1737790832277" duration="11634000" />
+      <workItem from="1737790832277" duration="12463000" />
     </task>
     <servers />
   </component>
