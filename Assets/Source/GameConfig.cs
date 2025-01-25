@@ -27,7 +27,6 @@ public class GameConfig : ScriptableObject
     public float[] orderTimers;
     public Item[] choopedVersions;
     public Item[] cookedVersions;
-    public Item[] steepedVersions;
     public CupFilmentMaterial[] filmentMaterials;
     public GameObject[] filmentPrefabs;
     

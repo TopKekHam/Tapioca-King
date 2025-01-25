@@ -56,6 +56,7 @@ public class CupFilment
             {
                 case ItemType.MILK: return milkType == other.milkType;
                 case ItemType.TEA: return teaType == other.teaType;
+                case ItemType.STEEPED_TEA: return teaType == other.teaType;
                 case ItemType.COOKED_FRUIT: return fruitType == other.fruitType;
                 case ItemType.COOKED_TAPIOCA: return true;
             }
@@ -102,9 +103,9 @@ public class Item : Interactable, IItemHolder
             itemInPot.transform.position = filmentParent.position;
         }
 
-        if (itemType == ItemType.KETTLE)
+        if (itemType == ItemType.KETTLE && itemInKettle != null)
         {
-            Debug.Assert(false);
+            itemInKettle.transform.position = filmentParent.position;
         }
     }
 
@@ -112,6 +113,11 @@ public class Item : Interactable, IItemHolder
     public bool PotIsFull()
     {
         return itemInPot != null;
+    }
+
+    public bool KettleIsFull()
+    {
+        return itemInKettle != null;
     }
 
     public void FreeSelf()
@@ -177,6 +183,14 @@ public class Item : Interactable, IItemHolder
                 AddFilment(item.CreateFilment());
                 Destroy(item.gameObject);
             }
+            else if (player.holdedItem.itemType == ItemType.KETTLE
+                     && player.holdedItem.KettleIsFull()
+                     && player.holdedItem.itemInKettle.itemType.IsFilment())
+            {
+                var item = player.holdedItem.ReleaseItem();
+                AddFilment(item.CreateFilment());
+                Destroy(item.gameObject);
+            }
             else
             {
                 // can't fill
@@ -190,6 +204,12 @@ public class Item : Interactable, IItemHolder
                 Destroy(gameObject);
             }
             else if (itemType == ItemType.POT && PotIsFull())
+            {
+                var item = ReleaseItem();
+                player.holdedItem.AddFilment(item.CreateFilment());
+                Destroy(item.gameObject);
+            }
+            else if (itemType == ItemType.KETTLE && KettleIsFull())
             {
                 var item = ReleaseItem();
                 player.holdedItem.AddFilment(item.CreateFilment());
@@ -209,6 +229,10 @@ public class Item : Interactable, IItemHolder
         {
             itemInPot = item;
         }
+        else if (itemType == ItemType.KETTLE)
+        {
+            itemInKettle= item;
+        }
         else
         {
             Debug.Assert(false);
@@ -221,6 +245,12 @@ public class Item : Interactable, IItemHolder
         {
             var temp = itemInPot;
             itemInPot = null;
+            return temp;
+        }
+        else if (itemType == ItemType.KETTLE)
+        {
+            var temp = itemInKettle;
+            itemInKettle = null;
             return temp;
         }
         else
@@ -240,7 +270,7 @@ public class Item : Interactable, IItemHolder
         switch (filment.itemType)
         {
             case ItemType.MILK: filment.milkType = milkType; break;
-            case ItemType.TEA: filment.teaType = teaType; break;
+            case ItemType.STEEPED_TEA: filment.teaType = teaType; break;
             case ItemType.COOKED_FRUIT: filment.fruitType = fruitType; break;
         }
 
