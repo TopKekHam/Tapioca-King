@@ -92,7 +92,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!114 &3249438537798035339
 MonoBehaviour:
@@ -111,6 +111,10 @@ MonoBehaviour:
   fruitType: 3
   teaType: 0
   milkType: 0
+  filmentHeightOffest:
+  - 0
+  - 0
+  - 0
   filments:
   - itemType: 0
     fruitType: 0
@@ -209,6 +213,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9e31a200dcf3db44aff39723a2a46fd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: -253334589386885458, guid: d9e31a200dcf3db44aff39723a2a46fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
