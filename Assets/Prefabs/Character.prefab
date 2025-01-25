@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4866963064548104607, guid: 77f9ab464635c81498cf2ea495638108, type: 3}
-  SPEED: 2.5
+  SPEED: 5
   THROW_POWER: 250
   THROW_MAX_HOLD_IN_SECONDS: 2
   THROW_HOLD_THRESHOLD_IN_SECONDS: 0.33
@@ -2403,7 +2403,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ba3182cd2982b604ab099765398d49a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

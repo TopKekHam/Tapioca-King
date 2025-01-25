@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3548509463716465055
+--- !u!1 &336051380257884573
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6412156135661303993}
-  - component: {fileID: 118180303054770054}
-  - component: {fileID: 4266964523873583439}
+  - component: {fileID: 1243739168844281742}
   m_Layer: 6
-  m_Name: Blueberry Box
+  m_Name: Anim Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6412156135661303993
+--- !u!4 &1243739168844281742
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3548509463716465055}
+  m_GameObject: {fileID: 336051380257884573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.891, y: 1.789, z: 3.125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,6 +46,41 @@ Transform:
   - {fileID: 9099300465273695525}
   - {fileID: 8553418075904673778}
   - {fileID: 7042672195587335656}
+  m_Father: {fileID: 6412156135661303993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3548509463716465055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6412156135661303993}
+  - component: {fileID: 118180303054770054}
+  - component: {fileID: 4266964523873583439}
+  - component: {fileID: 6538326231163424560}
+  m_Layer: 6
+  m_Name: Blueberry Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6412156135661303993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548509463716465055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.891, y: 1.789, z: 3.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1243739168844281742}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &118180303054770054
@@ -84,13 +117,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: -0.36, y: 0, z: -0.53}
+--- !u!95 &6538326231163424560
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548509463716465055}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f52c125b4ceaaf44b881efe0e4b8ea79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1476705591714669575
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,6 +187,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (10)
@@ -152,7 +211,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,6 +253,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (15)
@@ -214,7 +277,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,6 +319,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (7)
@@ -276,7 +343,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -318,6 +385,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (5)
@@ -338,7 +409,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,6 +451,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (14)
@@ -400,7 +475,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,6 +517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (9)
@@ -462,7 +541,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,6 +583,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (4)
@@ -524,7 +607,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -566,6 +649,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (2)
@@ -586,7 +673,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,6 +715,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (8)
@@ -648,7 +739,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (6)
@@ -710,7 +805,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -752,6 +847,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (13)
@@ -772,7 +871,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15dd1a1919b64f49a2a587e9170ac93, type: 3}
       propertyPath: m_LocalScale.x
@@ -826,6 +925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b15dd1a1919b64f49a2a587e9170ac93, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: b15dd1a1919b64f49a2a587e9170ac93, type: 3}
       propertyPath: m_Name
       value: FruitBox
@@ -846,7 +949,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,6 +991,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (16)
@@ -908,7 +1015,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -950,6 +1057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (3)
@@ -970,7 +1081,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1012,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (12)
@@ -1032,7 +1147,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1074,6 +1189,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (11)
@@ -1094,7 +1213,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6412156135661303993}
+    m_TransformParent: {fileID: 1243739168844281742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1136,6 +1255,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e828223b8ce4484a938d71c2b12601a, type: 3}
       propertyPath: m_Name
       value: BlueBerry (1)

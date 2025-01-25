@@ -26,6 +26,7 @@ public class GameConfig : ScriptableObject
     public int maxConcurentOrders;
     public float[] orderTimers;
     public Item[] choopedVersions;
+    public Item[] cookedVersions;
     public CupFilmentMaterial[] filmentMaterials;
     public GameObject[] filmentPrefabs;
     
@@ -44,13 +45,39 @@ public class GameConfig : ScriptableObject
         return null;
     }
 
+    public Item GetCookedVersion(Item notCoockedItem)
+    {
+
+        foreach (Item cookedItem in cookedVersions)
+        {
+            if(notCoockedItem.itemType == ItemType.CHOOPED_FRUIT && cookedItem.itemType == ItemType.COOKED_FRUIT)
+            {
+                if (cookedItem.fruitType == notCoockedItem.fruitType)
+                {
+                    return cookedItem;
+                }
+            }
+            else if (notCoockedItem.itemType == ItemType.TAPIOCA && cookedItem.itemType == ItemType.COOKED_TAPIOCA)
+            {
+                return cookedItem;
+            }
+        }
+
+        Debug.Assert(false);
+        return null;
+    }
+
     public GameObject InstantiateFilment(int number, CupFilment filment)
     {
         var prefab = filmentPrefabs[number];
         
         var obj = GameObject.Instantiate(prefab);
-        var renderer = obj.GetComponent<MeshRenderer>();
-        renderer.sharedMaterials[0] = GetFilmentMaterial(filment);
+        //var renderer = obj.GetComponent<MeshRenderer>();
+        //var renderer2 = ;
+        var mat = GetFilmentMaterial(filment);
+        Debug.Log(mat.name);
+        obj.GetComponent<Renderer>().material = mat;
+        //renderer.materials[0] = mat; 
 
         return obj;
     }

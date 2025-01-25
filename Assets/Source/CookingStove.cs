@@ -14,11 +14,12 @@ public class CookingStove : Interactable, IItemHolder
     public GameConfig gameConfig;
     public TMP_Text label;
     public Transform itemOrigin;
+    public Item startingPot;
     [HideInInspector] public Item pot;
 
     void Start()
     {
-        
+        this.HoldAction(startingPot);
     }
 
     void Update()
@@ -27,9 +28,20 @@ public class CookingStove : Interactable, IItemHolder
         {
             if (pot.itemInPot != null && pot.itemInPot.itemType.Cookable())
             {
+                bool donePre = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime; ;
                 pot.itemInPot.cookingTimer += Time.deltaTime;
                 bool done = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime;
                 label.text = $"{(done ? "DONE" : "")} {pot.itemInPot.cookingTimer:N2}";
+
+                bool doneThisFrame = donePre == false && done;
+                if(doneThisFrame)
+                {
+                    var fruit = pot.itemInPot;
+                    var cookedVersion = gameConfig.GetCookedVersion(pot.itemInPot).gameObject;
+                    var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();
+                    Utils.HoldAction(this.pot, cookedItem);
+                    Destroy(fruit.gameObject);
+                }
 
                 if (pot.itemInPot.cookingTimer > gameConfig.burnTime)
                 {
@@ -79,10 +91,12 @@ public class CookingStove : Interactable, IItemHolder
         pot = item;
         pot.transform.position = itemOrigin.position;
         pot.rigidbody.linearVelocity = Vector3.zero;
+        pot.rigidbody.isKinematic = true;
     }
 
     public Item ReleaseItem()
     {
+        pot.rigidbody.isKinematic = false;
         var temp = pot;
         pot = null;
         return temp;

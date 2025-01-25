@@ -24,7 +24,7 @@ public static class Utils
 
     public static bool Cookable(this ItemType itemType)
     {
-        return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
+        return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.TAPIOCA;
     }
 
     public static bool Steepable(this ItemType itemType)
@@ -46,6 +46,6 @@ public static class Utils
 
     public static bool IsFilment(this ItemType itemType)
     {
-        return itemType == ItemType.TEA || itemType == ItemType.MILK || itemType == ItemType.COOKED_FRUIT;
+        return itemType == ItemType.STEEPED_TEA || itemType == ItemType.MILK || itemType == ItemType.COOKED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
     }
 }

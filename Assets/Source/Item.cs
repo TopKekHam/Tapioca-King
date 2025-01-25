@@ -87,6 +87,8 @@ public class Item : Interactable, IItemHolder
 
     private IItemHolder myHolder;
 
+    public Transform filmentParent;
+
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -254,10 +256,11 @@ public class Item : Interactable, IItemHolder
         var config = GameManager.instance.gameConfig;
 
         var obj = config.InstantiateFilment(filmentsLength, filment);
-
-
-        obj.transform.parent = transform;
+        
+        
+        obj.transform.parent = filmentParent;
         obj.transform.localPosition = new Vector3(0, filmentHeightOffest[filmentsLength], 0);
+        obj.transform.localRotation = Quaternion.identity;
 
         filmentsLength += 1;
     }
