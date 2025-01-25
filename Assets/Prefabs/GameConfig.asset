@@ -17,7 +17,7 @@ MonoBehaviour:
   burnTime: 10
   coal: {fileID: 4866963064548104607, guid: a519c70805cb94b4f9334f0f83cb1931, type: 3}
   choopsToCutFruit: 10
-  gameLengthInSeconds: 10
+  gameLengthInSeconds: 600
   maxConcurentOrders: 5
   orderTimers:
   - 9999
