@@ -90,6 +90,12 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
     Animator characterAnim;
 
+    [SerializeField] Transform characterGFX;
+    [SerializeField] Transform itemPos;
+    private float turnTimer;
+    private bool right=true;
+    Quaternion savedRot;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -149,6 +155,9 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         float power = 4 * powerNormal;
         Vector3 powerVector = castRayDireaction.normalized;
         holdedItem.rigidbody.AddForce(THROW_POWER * powerNormal * powerVector);
+
+        characterAnim.SetTrigger("Throw");
+        //characterAnim.SetBool("Holding", false);
     }
 
     bool TryGetNearestInteractable(out Interactable interactable)
@@ -182,12 +191,44 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
     void UpdateHoldedItemPosition()
     {
-        holdedItem.transform.position = transform.position + castRayDireaction;
+        //holdedItem.transform.position = transform.position + castRayDireaction;
+        holdedItem.transform.position = itemPos.position;
+        holdedItem.transform.rotation = characterGFX.rotation;
     }
 
     private void FixedUpdate()
     {
         var moveDir = input.GetMovementDirection();
+
+        turnTimer += Time.deltaTime *1.5f;
+        if (moveDir.x>0)
+        {
+            //Vector3(329.947937, 18.3123474, 350.589386)
+            if (!right)
+            {
+                turnTimer = 0;
+                right = true;
+                savedRot = characterGFX.rotation;
+            }
+        }
+        else if (moveDir.x<0)
+        {
+            if (right)
+            {
+                turnTimer = 0;
+                right = false;
+                savedRot = characterGFX.rotation;
+            }
+        }
+
+        if (right)
+        {
+            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 72, 0), turnTimer);
+        }
+        else
+        {
+            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 252, 0), turnTimer);
+        }
 
         if (moveDir != Vector3.zero && IsChooping() == false)
         {
@@ -218,12 +259,14 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         holdedItem = item;
         UpdateHoldedItemPosition();
+        characterAnim.SetBool("Holding", true);
     }
 
     public Item ReleaseItem()
     {
         var temp = holdedItem;
         holdedItem = null;
+        characterAnim.SetBool("Holding", false);
         return temp;
     }
 
@@ -238,10 +281,14 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         choopingBoard = board;
         rigidbody.linearVelocity = Vector3.zero;
+
+        characterAnim.SetBool("Chopping", true);
     }
 
     public void UnlookChooping()
     {
         choopingBoard = null;
+
+        characterAnim.SetBool("Chopping", false);
     }
 }
