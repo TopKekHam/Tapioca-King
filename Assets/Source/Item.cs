@@ -99,7 +99,12 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT && itemInPot != null)
         {
-            itemInPot.transform.position = transform.position;
+            itemInPot.transform.position = filmentParent.position;
+        }
+
+        if (itemType == ItemType.KETTLE)
+        {
+            Debug.Assert(false);
         }
     }
 

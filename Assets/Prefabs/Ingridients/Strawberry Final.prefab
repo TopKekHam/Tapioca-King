@@ -132,6 +132,7 @@ MonoBehaviour:
   itemInPot: {fileID: 0}
   rigidbody: {fileID: 0}
   cookingTimer: 0
+  filmentParent: {fileID: 0}
 --- !u!135 &1945732471698874283
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -217,6 +218,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b77c57047e869d04188e88d03b03968c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
     - target: {fileID: 919132149155446097, guid: b77c57047e869d04188e88d03b03968c, type: 3}
       propertyPath: m_Name
       value: Tut
