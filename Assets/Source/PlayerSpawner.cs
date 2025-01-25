@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public Transform[] spawnPoints;
+    
     
     void Start()
     {

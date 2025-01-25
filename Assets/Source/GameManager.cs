@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class OrderToFill
@@ -24,7 +25,10 @@ public class GameManager : MonoBehaviour
     public UIOrder uiOrderPrefab;
     public Transform uiOrderParent;
     public int score = 0;
-        
+    public Transform[] spawnPoints;
+    public PlayerComponent playerPrefab;
+    public Transform entitiesOrigin;
+
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
     float orderTimer = 0;
@@ -98,14 +102,14 @@ public class GameManager : MonoBehaviour
                 AnimateWrongDrinkServed();
                 return;
             }
-        
+
             if (filments[i].Equals(order.filments[i]) == false)
             {
                 AnimateWrongDrinkServed();
                 return;
             }
         }
-        
+
         Destroy(ordersToFill[0].uiElement.gameObject);
         ordersToFill.RemoveAt(0);
         score += 100;
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Animating good drink served");
     }
-    
+
     void AnimateWrongDrinkServed()
     {
         Debug.Log("Animate wrong drink served");
@@ -163,5 +167,26 @@ public class GameManager : MonoBehaviour
         };
 
         return orderToFill;
+    }
+
+    private int playerId = 0;
+
+
+    public int OnPlayerJoin(GamePlayerInput playerInput)
+    {
+        if (gameState == GameState.LOBBY)
+        {
+            var spawnPoint = spawnPoints[playerId].position;
+
+            playerId++;
+
+            PlayerComponent player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity, entitiesOrigin).GetComponent<PlayerComponent>();
+
+            player.input = playerInput;
+
+            return playerId;
+        }
+
+        return -1;
     }
 }

@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ingridients/Blueberry.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ingridients/Blueberry.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Utensils/Cup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Utensils/Cup.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/StartGameButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/StartGameButton.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,13 +73,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7764">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="7764" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -111,7 +102,7 @@
       <workItem from="1737707375706" duration="12480000" />
       <workItem from="1737726671927" duration="1470000" />
       <workItem from="1737728229965" duration="26053000" />
-      <workItem from="1737790832277" duration="5991000" />
+      <workItem from="1737790832277" duration="12463000" />
     </task>
     <servers />
   </component>
