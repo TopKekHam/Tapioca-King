@@ -74,7 +74,7 @@ public class Item : Interactable, IItemHolder
     public FruitType fruitType;
     public TeaType teaType;
     public MilkType milkType;
-    
+
     public float[] filmentHeightOffest = new float[3];
 
     [HideInInspector] public CupFilment[] filments = new CupFilment[3];
@@ -165,6 +165,20 @@ public class Item : Interactable, IItemHolder
                 // can't fill
             }
         }
+        else if (player.IsHoldingItem() && player.holdedItem.itemType == ItemType.CUP)
+        {
+            if (itemType.IsFilment())
+            {
+                player.holdedItem.AddFilment(CreateFilment());
+                Destroy(gameObject);
+            }
+            else if (itemType == ItemType.POT && PotIsFull())
+            {
+                var item = ReleaseItem();
+                player.holdedItem.AddFilment(item.CreateFilment());
+                Destroy(item.gameObject);
+            }
+        }
         else if (IsHolded() == false && player.IsHoldingItem() == false)
         {
             SetHoldedBy(player);
@@ -228,13 +242,13 @@ public class Item : Interactable, IItemHolder
         filments[filmentsLength] = filment;
 
         var config = GameManager.instance.gameConfig;
-        
+
         var obj = config.InstantiateFilment(filmentsLength, filment);
 
-        
+
         obj.transform.parent = transform;
         obj.transform.localPosition = new Vector3(0, filmentHeightOffest[filmentsLength], 0);
-        
+
         filmentsLength += 1;
     }
 }

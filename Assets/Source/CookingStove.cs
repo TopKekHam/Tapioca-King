@@ -18,6 +18,7 @@ public class CookingStove : Interactable, IItemHolder
 
     void Start()
     {
+        
     }
 
     void Update()
