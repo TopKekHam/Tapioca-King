@@ -1684,6 +1684,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -40.567993
       objectReference: {fileID: 0}
+    - target: {fileID: -8319848782977256023, guid: 070bde693ce5e964ab725f90c67a5931, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4673aa9729e44e040b3c9eca8eb3325a, type: 2}
     - target: {fileID: 919132149155446097, guid: 070bde693ce5e964ab725f90c67a5931, type: 3}
       propertyPath: m_Name
       value: Sack (1)
@@ -3886,7 +3890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6191367384067507156, guid: ce678f6d627a23741a7142e3d75f85d6, type: 3}
+  - {fileID: 2100000, guid: 4673aa9729e44e040b3c9eca8eb3325a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
