@@ -27,6 +27,11 @@ public static class Utils
         return itemType == ItemType.CHOOPED_FRUIT || itemType == ItemType.COOKED_TAPIOCA;
     }
 
+    public static bool Steepable(this ItemType itemType)
+    {
+        return itemType == ItemType.TEA;
+    }
+    
     public static void LockFromChooping(this ChoopingBoard board, PlayerComponent playerComponent)
     {
         board.LockPlayer(playerComponent);

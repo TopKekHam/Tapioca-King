@@ -16,6 +16,7 @@ public class GameConfig : ScriptableObject
 {
 
     public float fruitCookTime = 7.5f;
+    public float teaSteepTime = 7.5f;
     public float burnTime = 12.5f;
     public Item coal;
     public int choopsToCutFruit = 10;

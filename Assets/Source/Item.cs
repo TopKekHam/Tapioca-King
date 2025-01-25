@@ -80,8 +80,10 @@ public class Item : Interactable, IItemHolder
     [HideInInspector] public CupFilment[] filments = new CupFilment[3];
     [HideInInspector] public int filmentsLength = 0;
     [HideInInspector] public Item itemInPot;
+    [HideInInspector] public Item itemInKettle;
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public float cookingTimer = 0;
+    [HideInInspector] public float steepingTimer = 0;
 
     private IItemHolder myHolder;
 
@@ -139,6 +141,14 @@ public class Item : Interactable, IItemHolder
         if (itemType == ItemType.POT && player.IsHoldingItem())
         {
             if (player.holdedItem.itemType.Cookable())
+            {
+                player.GiveItemTo(this);
+                this.itemInPot.transform.position = transform.position;
+            }
+        }
+        if(itemType == ItemType.KETTLE && player.IsHoldingItem())
+        {
+            if (player.holdedItem.itemType.Steepable())
             {
                 player.GiveItemTo(this);
                 this.itemInPot.transform.position = transform.position;

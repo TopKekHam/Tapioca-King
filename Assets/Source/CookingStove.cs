@@ -52,8 +52,6 @@ public class CookingStove : Interactable, IItemHolder
 
     public override void Interact(PlayerComponent player)
     {
-        
-        
         if (pot == null && player.IsHoldingItem())
         {
             if (player.holdedItem.itemType == ItemType.POT)

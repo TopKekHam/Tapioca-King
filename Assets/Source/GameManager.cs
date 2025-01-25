@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
     float orderTimer = 0;
-    int playerCount = 1;
+    int playerCount = 0;
 
     void Awake()
     {
@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.LOBBY)
         {
             var spawnPoint = spawnPoints[playerId].position;
-
+            playerCount++;
             playerId++;
 
             PlayerComponent player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity, entitiesOrigin).GetComponent<PlayerComponent>();
