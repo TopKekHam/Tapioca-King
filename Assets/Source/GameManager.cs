@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
@@ -28,11 +29,13 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnPoints;
     public PlayerComponent playerPrefab;
     public Transform entitiesOrigin;
-
+    
+    public GameObject winPanel, lostPanel;
+    
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
     float orderTimer = 0;
-    int playerCount = 0;
+    [HideInInspector] public int playerCount = 0;
 
     void Awake()
     {
@@ -75,8 +78,53 @@ public class GameManager : MonoBehaviour
             order.uiElement.ShowOrder(order);
             ordersToFill.Add(order);
         }
+
+        if (gameTimer <= 0)
+        {
+            EndGame();
+        }
     }
 
+    public void EndGame()
+    {
+        gameState = GameState.LOBBY;
+        
+        foreach (var order in ordersToFill)
+        {
+            Destroy(order.uiElement.gameObject);
+        }
+        
+        ordersToFill.Clear();
+        
+        if (score >= gameConfig.pointsToPass[playerCount])
+        {
+            ShowWin();
+        }
+        else
+        {
+            ShowLose();
+        }
+    }
+
+    void ShowWin()
+    {
+        winPanel.SetActive(true);
+        StartCoroutine(HideWinLosePanels());
+    }
+
+    void ShowLose()
+    {
+        lostPanel.SetActive(true);
+        StartCoroutine(HideWinLosePanels());
+    }
+
+    IEnumerator HideWinLosePanels()
+    {
+        yield return new WaitForSeconds(5);
+        winPanel.SetActive(false);
+        lostPanel.SetActive(false);
+    }
+    
     public void BeginGame()
     {
         gameState = GameState.PLAYING;
@@ -136,24 +184,24 @@ public class GameManager : MonoBehaviour
 
         int teaOrMilk = Random.Range(0, 2);
 
-        //if (teaOrMilk == 0)
-        //{
-        //    // tea
-        //    orderToFill.filments[0] = new CupFilment()
-        //    {
-        //        itemType = ItemType.STEEPED_TEA,
-        //        teaType = (TeaType)Random.Range(1, 4),
-        //    };
-        //}
-        //else
-        //{
+        if (teaOrMilk == 0)
+        {
+            // tea
+            orderToFill.filments[2] = new CupFilment()
+            {
+                itemType = ItemType.STEEPED_TEA,
+                teaType = (TeaType)Random.Range(1, 4),
+            };
+        }
+        else
+        {
             // milk
             orderToFill.filments[2] = new CupFilment()
             {
                 itemType = ItemType.MILK,
                 milkType = (MilkType)Random.Range(1, 3),
             };
-        //}
+        }
 
         orderToFill.filments[1] = new CupFilment()
         {

@@ -1,45 +1,37 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+[Serializable]
+public class ItemToSprite
+{
+    public CupFilment filment;
+    public Sprite sprite;
+}
 
 public class UIOrder : MonoBehaviour
 {
-    public TMP_Text[] text;
+    public Image[] images;
+    public ItemToSprite[] imageToSprite;
 
-    public void ShowOrder(OrderToFill order)
+    public Sprite FilmentToSprite(CupFilment filment)
     {
-        text[0].text = RowToString(order.filments[0]);
-        text[1].text = RowToString(order.filments[1]);
-        text[2].text = RowToString(order.filments[2]);
-    }
-
-    public string RowToString(CupFilment filment)
-    {
-        string str = "";
-        
-        switch (filment.itemType)
+        for (int i = 0; i < imageToSprite.Length; i++)
         {
-            case ItemType.COOKED_FRUIT:
+            if (imageToSprite[i].filment.Equals(filment))
             {
-                str += $"{filment.fruitType}";
+                return imageToSprite[i].sprite;
             }
-                break;
-            case ItemType.TEA:
-            {
-                str += $"{filment.teaType}";
-            }
-                break;
-            case ItemType.MILK:
-            {
-                str += $"{filment.milkType}";
-            }
-                break;
-            default:
-            {
-                str += $"{filment.itemType} ";
-            }
-                break;
         }
 
-        return str;
+        return null;
+    }
+    
+    public void ShowOrder(OrderToFill order)
+    {
+        images[0].sprite = FilmentToSprite(order.filments[0]);
+        images[1].sprite = FilmentToSprite(order.filments[1]);
+        images[2].sprite = FilmentToSprite(order.filments[2]);
     }
 }

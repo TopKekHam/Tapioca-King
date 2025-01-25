@@ -28,6 +28,7 @@ public class KettleStation : Interactable, IItemHolder
                 label.text = $"{(done ? "DONE" : "")} {kettle.itemInKettle.cookingTimer:N2}";
 
                 bool doneThisFrame = donePre == false && done;
+                
                 if(doneThisFrame)
                 {
                     var fruit = kettle.itemInKettle;
