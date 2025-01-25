@@ -16,6 +16,8 @@ public class CookingStove : Interactable, IItemHolder
     public Transform itemOrigin;
     public Item startingPot;
     public AudioClip bubbleAudioClip;
+    public AudioClip doneAudioClip;
+    public GameObject flames;
     [HideInInspector] public Item pot;
 
 
@@ -26,18 +28,22 @@ public class CookingStove : Interactable, IItemHolder
 
     void Update()
     {
+        flames.SetActive(pot != null && pot.itemInPot != null && pot.itemInPot.itemType.Cookable());
+
         if (pot != null)
         {
             if (pot.itemInPot != null && pot.itemInPot.itemType.Cookable())
             {
+
                 bool donePre = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime; ;
                 pot.itemInPot.cookingTimer += Time.deltaTime;
                 bool done = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime;
                 label.text = $"{(done ? "DONE" : "")} {pot.itemInPot.cookingTimer:N2}";
 
                 bool doneThisFrame = donePre == false && done;
-                if(doneThisFrame)
+                if (doneThisFrame)
                 {
+                    GameManager.PlaySingle(doneAudioClip);
                     var fruit = pot.itemInPot;
                     var cookedVersion = gameConfig.GetDoneVersion(pot.itemInPot).gameObject;
                     var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();

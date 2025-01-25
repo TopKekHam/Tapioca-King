@@ -10,6 +10,8 @@ public class KettleStation : Interactable, IItemHolder
     public Transform itemOrigin;
     public Item startingKettle;
     public AudioClip bubbleAudioClip;
+    public AudioClip doneAudioClip;
+    public GameObject flames;
     [HideInInspector] public Item kettle;
 
     void Start()
@@ -19,19 +21,24 @@ public class KettleStation : Interactable, IItemHolder
 
     void Update()
     {
+        flames.SetActive(kettle != null && kettle.itemInKettle != null && kettle.itemInKettle.itemType.Steepable());
+
+
         if (kettle != null)
         {
             if (kettle.itemInKettle != null && kettle.itemInKettle.itemType.Steepable())
             {
+
                 bool donePre = kettle.itemInKettle.cookingTimer >= gameConfig.fruitCookTime; ;
                 kettle.itemInKettle.cookingTimer += Time.deltaTime;
                 bool done = kettle.itemInKettle.cookingTimer >= gameConfig.fruitCookTime;
                 label.text = $"{(done ? "DONE" : "")} {kettle.itemInKettle.cookingTimer:N2}";
 
                 bool doneThisFrame = donePre == false && done;
-                
-                if(doneThisFrame)
+
+                if (doneThisFrame)
                 {
+                    GameManager.PlaySingle(doneAudioClip);
                     var fruit = kettle.itemInKettle;
                     var cookedVersion = gameConfig.GetDoneVersion(kettle.itemInKettle).gameObject;
                     var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();

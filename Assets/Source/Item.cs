@@ -233,12 +233,10 @@ public class Item : Interactable, IItemHolder
         if (itemType == ItemType.POT)
         {
             itemInPot = item;
-            itemInPot.transform.localRotation = filmentParent.localRotation;
         }
         else if (itemType == ItemType.KETTLE)
         {
             itemInKettle = item;
-            itemInKettle.transform.localRotation = transform.localRotation;
         }
         else
         {
@@ -302,7 +300,6 @@ public class Item : Interactable, IItemHolder
         
         obj.transform.parent = filmentParent;
         obj.transform.localPosition = new Vector3(0, filmentHeightOffest[filmentsLength], 0);
-        obj.transform.localRotation = Quaternion.identity;
 
         filmentsLength += 1;
     }

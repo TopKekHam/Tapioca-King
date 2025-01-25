@@ -4,6 +4,7 @@ using UnityEngine;
 public class StartGameButton : Interactable
 {
     public Transform ButtonTransform;
+    public AudioClip audioClick;
 
     public IEnumerable AnimatePress()
     {
@@ -24,6 +25,7 @@ public class StartGameButton : Interactable
         if (GameManager.instance.gameState == GameState.LOBBY)
         {
             GameManager.instance.BeginGame();
+            GameManager.PlaySingle(audioClick);
         }
     }
 }

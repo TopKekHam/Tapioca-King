@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonTransform: {fileID: 3649176363346686764}
+  audioClick: {fileID: 8300000, guid: a8d6a9badf6cc3b469e8aa6e7a03199c, type: 3}
 --- !u!65 &7522300036722134551
 BoxCollider:
   m_ObjectHideFlags: 0

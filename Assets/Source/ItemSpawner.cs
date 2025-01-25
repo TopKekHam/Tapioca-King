@@ -4,6 +4,7 @@ public class ItemSpawner : Interactable
 {
     
     public Item itemPrefab;
+    public AudioClip interactAudio;
     
     void Start()
     {
@@ -21,6 +22,11 @@ public class ItemSpawner : Interactable
         {
             var newItem = Instantiate(itemPrefab);
             Utils.HoldAction(player, newItem.GetComponent<Item>());
+
+            if(interactAudio != null)
+            {
+                GameManager.PlaySingle(interactAudio);
+            }
         }
     }
 }

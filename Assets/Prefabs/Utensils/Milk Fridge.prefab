@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 6829086229053792778, guid: a80bd2d4ae6187e4eb9ebd0702384f7f, type: 3}
+  interactAudio: {fileID: 8300000, guid: 3cdd529665f961941bd8ba28a01486ae, type: 3}
 --- !u!95 &2361021108915272865
 Animator:
   serializedVersion: 7

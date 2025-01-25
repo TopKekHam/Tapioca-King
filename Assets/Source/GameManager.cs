@@ -30,11 +30,15 @@ public class GameManager : MonoBehaviour
     public PlayerComponent playerPrefab;
     public Transform entitiesOrigin;
     public AudioSource audioSource;
+    public AudioClip audioGameOver;
+    public AudioClip audioGameOverAboutToBeOver;
     public GameObject winPanel, lostPanel;
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
     float orderTimer = 0;
     [HideInInspector] public int playerCount = 0;
+
+    bool playedOverSound = false;
 
     void Awake()
     {
@@ -78,6 +82,12 @@ public class GameManager : MonoBehaviour
             ordersToFill.Add(order);
         }
 
+        if(playedOverSound == false && gameTimer < 60)
+        {
+            playedOverSound = true;
+            PlaySingle(audioGameOverAboutToBeOver);
+        }
+
         if (gameTimer <= 0)
         {
             EndGame();
@@ -87,7 +97,9 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameState = GameState.LOBBY;
-        
+
+        PlaySingle(audioGameOver);
+
         foreach (var order in ordersToFill)
         {
             Destroy(order.uiElement.gameObject);
@@ -126,6 +138,7 @@ public class GameManager : MonoBehaviour
     
     public void BeginGame()
     {
+        playedOverSound = false;
         gameState = GameState.PLAYING;
         gameTimer = gameConfig.gameLengthInSeconds;
         orderTimer = gameConfig.orderTimers[playerCount];
