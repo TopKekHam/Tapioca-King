@@ -9,7 +9,6 @@ public class StartGameButton : Interactable
     {
         ButtonTransform.transform.localPosition += new Vector3(0, -0.5f, 0);
         
-        
         return null;
     }
 

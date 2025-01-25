@@ -79,6 +79,10 @@ MonoBehaviour:
   fruitType: 2
   teaType: 0
   milkType: 0
+  filmentHeightOffest:
+  - 0
+  - 0
+  - 0
   filments:
   - itemType: 0
     fruitType: 0

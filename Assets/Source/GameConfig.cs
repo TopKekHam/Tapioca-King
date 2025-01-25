@@ -20,6 +20,8 @@ public class GameConfig : ScriptableObject
     public Item coal;
     public int choopsToCutFruit = 10;
 
+    public float gameLengthInSeconds = 60f * 10;
+    
     public int maxConcurentOrders;
     public float[] orderTimers;
     public Item[] choopedVersions;

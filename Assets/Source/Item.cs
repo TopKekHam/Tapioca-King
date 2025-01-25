@@ -17,6 +17,7 @@ public enum ItemType
     COOKED_FRUIT = 9,
     TAPIOCA = 10,
     COOKED_TAPIOCA = 11,
+    STEEPED_TEA = 12,
 }
 
 public enum FruitType
