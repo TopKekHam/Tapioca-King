@@ -769,7 +769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2290246701115733367}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.260723e-16, y: 0.823181, z: -1.827829e-16, w: 0.5677792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -788,8 +788,9 @@ Transform:
   - {fileID: 1262511078857958605}
   - {fileID: 2332335392213066193}
   - {fileID: 207062373749927485}
+  - {fileID: 6205875888273647159}
   m_Father: {fileID: 7247955401740532186}
-  m_LocalEulerAnglesHint: {x: 0, y: 110.809, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2372740076632094340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1579,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3104030732885584870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6739729332072696270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6205875888273647159}
+  m_Layer: 0
+  m_Name: 'Hand '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6205875888273647159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739729332072696270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.124, z: 0.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1342897540800424706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7071354278214571829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,14 +1639,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7071354278214571829}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.26769873, y: 0.13217111, z: -0.037101015, w: 0.9536727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1342897540800424706}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -30.052, y: 18.312, z: -9.411}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3294265990453685578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1695,6 +1727,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   takeAudioClip: {fileID: 8300000, guid: 0a62fdb647e914342a48e1897c5dd776, type: 3}
   holdedItem: {fileID: 0}
+  characterGFX: {fileID: 1342897540800424706}
+  itemPos: {fileID: 6205875888273647159}
 --- !u!135 &1964301340029188534
 SphereCollider:
   m_ObjectHideFlags: 0

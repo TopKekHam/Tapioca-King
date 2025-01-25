@@ -11,7 +11,7 @@ public class UIScore : MonoBehaviour
 
         if (gameManager.gameState == GameState.PLAYING)
         {
-            label.text = $"{gameManager.score}";
+            label.text = $"{gameManager.score} / {gameManager.gameConfig.pointsToPass[gameManager.playerCount]}";
         }
         else
         {

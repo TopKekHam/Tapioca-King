@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d990844b-66d4-47d5-96b6-3934be8f5c2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Source/CookingStove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/CookingStove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tapioca King/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Order.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Order.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LEVEL1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LEVEL1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Item.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/KettleStation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/KettleStation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/UIOrder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/UIOrder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/UIScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/UIScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites &amp; UI/milkCow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites &amp; UI/milkCow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites &amp; UI/milkSoy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites &amp; UI/milkSoy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +117,7 @@
       <workItem from="1737707375706" duration="12480000" />
       <workItem from="1737726671927" duration="1470000" />
       <workItem from="1737728229965" duration="26053000" />
-      <workItem from="1737790832277" duration="15598000" />
+      <workItem from="1737790832277" duration="19208000" />
     </task>
     <servers />
   </component>

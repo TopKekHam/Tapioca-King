@@ -25,6 +25,7 @@ public class GameConfig : ScriptableObject
     
     public int maxConcurentOrders;
     public float[] orderTimers;
+    public float[] pointsToPass;
     public Item[] choopedVersions;
     public Item[] cookedVersions;
     public CupFilmentMaterial[] filmentMaterials;
