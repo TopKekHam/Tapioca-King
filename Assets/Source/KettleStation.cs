@@ -8,11 +8,12 @@ public class KettleStation : Interactable, IItemHolder
     public GameConfig gameConfig;
     public TMP_Text label;
     public Transform itemOrigin;
+    public Item startingKettle;
     [HideInInspector] public Item kettle;
 
     void Start()
     {
-        
+        this.HoldAction(startingKettle);
     }
 
     void Update()
@@ -21,9 +22,20 @@ public class KettleStation : Interactable, IItemHolder
         {
             if (kettle.itemInKettle != null && kettle.itemInKettle.itemType.Steepable())
             {
-                kettle.itemInKettle.steepingTimer += Time.deltaTime;
-                bool done = kettle.itemInKettle.steepingTimer >= gameConfig.teaSteepTime;
-                label.text = $"{(done ? "DONE" : "")} {kettle.itemInKettle.steepingTimer:N2}";
+                bool donePre = kettle.itemInKettle.cookingTimer >= gameConfig.fruitCookTime; ;
+                kettle.itemInKettle.cookingTimer += Time.deltaTime;
+                bool done = kettle.itemInKettle.cookingTimer >= gameConfig.fruitCookTime;
+                label.text = $"{(done ? "DONE" : "")} {kettle.itemInKettle.cookingTimer:N2}";
+
+                bool doneThisFrame = donePre == false && done;
+                if(doneThisFrame)
+                {
+                    var fruit = kettle.itemInKettle;
+                    var cookedVersion = gameConfig.GetDoneVersion(kettle.itemInKettle).gameObject;
+                    var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();
+                    Utils.HoldAction(this.kettle, cookedItem);
+                    Destroy(fruit.gameObject);
+                }
 
                 if (kettle.itemInKettle.steepingTimer > gameConfig.burnTime)
                 {
@@ -73,10 +85,12 @@ public class KettleStation : Interactable, IItemHolder
         kettle = item;
         kettle.transform.position = itemOrigin.position;
         kettle.rigidbody.linearVelocity = Vector3.zero;
+        kettle.rigidbody.isKinematic = true;
     }
 
     public Item ReleaseItem()
     {
+        kettle.rigidbody.isKinematic = false;
         var temp = kettle;
         kettle = null;
         return temp;

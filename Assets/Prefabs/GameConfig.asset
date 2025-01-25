@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   fruitCookTime: 5
+  teaSteepTime: 7.5
   burnTime: 10
   coal: {fileID: 4866963064548104607, guid: a519c70805cb94b4f9334f0f83cb1931, type: 3}
   choopsToCutFruit: 10
@@ -32,6 +33,10 @@ MonoBehaviour:
   - {fileID: 4866963064548104607, guid: b5c358ca91ee1d6409391f7edd6b3a91, type: 3}
   - {fileID: 4866963064548104607, guid: 8fe4788bd4d19094eba0905c9d5cf562, type: 3}
   - {fileID: 8770397312552011204, guid: 82ca7422d96085a438dcf3af70bf4c0c, type: 3}
+  - {fileID: 4866963064548104607, guid: 1eb7ac77fab22e04b9a3ae1f1d47aaaf, type: 3}
+  - {fileID: 4866963064548104607, guid: 286fba9595a6cc141b7e725aff2d4662, type: 3}
+  - {fileID: 4866963064548104607, guid: 8cd5450d7d2184a4bb4cde71dfc24b4d, type: 3}
+  steepedVersions: []
   filmentMaterials:
   - filment:
       itemType: 1

@@ -37,7 +37,7 @@ public class CookingStove : Interactable, IItemHolder
                 if(doneThisFrame)
                 {
                     var fruit = pot.itemInPot;
-                    var cookedVersion = gameConfig.GetCookedVersion(pot.itemInPot).gameObject;
+                    var cookedVersion = gameConfig.GetDoneVersion(pot.itemInPot).gameObject;
                     var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();
                     Utils.HoldAction(this.pot, cookedItem);
                     Destroy(fruit.gameObject);

@@ -27,6 +27,7 @@ public class GameConfig : ScriptableObject
     public float[] orderTimers;
     public Item[] choopedVersions;
     public Item[] cookedVersions;
+    public Item[] steepedVersions;
     public CupFilmentMaterial[] filmentMaterials;
     public GameObject[] filmentPrefabs;
     
@@ -45,21 +46,28 @@ public class GameConfig : ScriptableObject
         return null;
     }
 
-    public Item GetCookedVersion(Item notCoockedItem)
+    public Item GetDoneVersion(Item notDoneItem)
     {
 
-        foreach (Item cookedItem in cookedVersions)
+        foreach (Item doneItem in cookedVersions)
         {
-            if(notCoockedItem.itemType == ItemType.CHOOPED_FRUIT && cookedItem.itemType == ItemType.COOKED_FRUIT)
+            if(notDoneItem.itemType == ItemType.CHOOPED_FRUIT && doneItem.itemType == ItemType.COOKED_FRUIT)
             {
-                if (cookedItem.fruitType == notCoockedItem.fruitType)
+                if (doneItem.fruitType == notDoneItem.fruitType)
                 {
-                    return cookedItem;
+                    return doneItem;
                 }
             }
-            else if (notCoockedItem.itemType == ItemType.TAPIOCA && cookedItem.itemType == ItemType.COOKED_TAPIOCA)
+            else if(notDoneItem.itemType == ItemType.TEA && doneItem.itemType == ItemType.STEEPED_TEA)
             {
-                return cookedItem;
+                if (doneItem.teaType == notDoneItem.teaType)
+                {
+                    return doneItem;
+                }
+            }
+            else if (notDoneItem.itemType == ItemType.TAPIOCA && doneItem.itemType == ItemType.COOKED_TAPIOCA)
+            {
+                return doneItem;
             }
         }
 
