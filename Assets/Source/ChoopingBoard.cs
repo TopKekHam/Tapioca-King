@@ -6,6 +6,7 @@ public class ChoopingBoard : Interactable, IItemHolder
     public TMP_Text label;
     public GameConfig config;
     public Transform fruitOrigin;
+    public AudioClip choopSound;
     [HideInInspector] public Item holdedItem = null;
     [HideInInspector] public int choopCounter = 0;
 
@@ -17,6 +18,7 @@ public class ChoopingBoard : Interactable, IItemHolder
 
     void Update()
     {
+        UpdateChoopingCouterLabel();
     }
 
     public override void Interact(PlayerComponent player)
@@ -28,18 +30,16 @@ public class ChoopingBoard : Interactable, IItemHolder
             choopCounter = 0;
             player.GiveItemTo(this);
             Utils.LockFromChooping(this, player);
-            UpdateChoopingCouterLabel();
         }
         else if (player.IsHoldingItem() == false && IsItemOnBoard())
         {
-            Utils.LockFromChooping(this, player);
-            UpdateChoopingCouterLabel();
+            Utils.LockFromChooping(this, player); 
         } 
     }
 
     void UpdateChoopingCouterLabel()
     {
-        if (holdedItem == null)
+        if (holdedItem == null || choopingPlayer == null)
         {
             label.text = "";
         }
@@ -51,6 +51,7 @@ public class ChoopingBoard : Interactable, IItemHolder
 
     public void Choop()
     {
+        GameManager.PlaySingle(choopSound);
         choopCounter += 1;
 
         UpdateChoopingCouterLabel();

@@ -9,6 +9,7 @@ public class KettleStation : Interactable, IItemHolder
     public TMP_Text label;
     public Transform itemOrigin;
     public Item startingKettle;
+    public AudioClip bubbleAudioClip;
     [HideInInspector] public Item kettle;
 
     void Start()
@@ -75,6 +76,7 @@ public class KettleStation : Interactable, IItemHolder
             }
             else if (player.holdedItem.itemType.Steepable() && kettle.itemInKettle == null)
             {
+                GameManager.PlaySingle(bubbleAudioClip);
                 player.GiveItemTo(kettle);
             }
         }

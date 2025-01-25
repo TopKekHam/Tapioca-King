@@ -1693,6 +1693,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  takeAudioClip: {fileID: 8300000, guid: 0a62fdb647e914342a48e1897c5dd776, type: 3}
   holdedItem: {fileID: 0}
 --- !u!135 &1964301340029188534
 SphereCollider:

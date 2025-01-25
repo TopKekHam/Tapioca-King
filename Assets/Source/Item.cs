@@ -101,11 +101,13 @@ public class Item : Interactable, IItemHolder
         if (itemType == ItemType.POT && itemInPot != null)
         {
             itemInPot.transform.position = filmentParent.position;
+            itemInPot.transform.localRotation = transform.localRotation;
         }
 
         if (itemType == ItemType.KETTLE && itemInKettle != null)
         {
             itemInKettle.transform.position = filmentParent.position;
+            itemInKettle.transform.localRotation = transform.localRotation;
         }
     }
 
@@ -228,10 +230,12 @@ public class Item : Interactable, IItemHolder
         if (itemType == ItemType.POT)
         {
             itemInPot = item;
+            itemInPot.transform.localRotation = filmentParent.localRotation;
         }
         else if (itemType == ItemType.KETTLE)
         {
-            itemInKettle= item;
+            itemInKettle = item;
+            itemInKettle.transform.localRotation = transform.localRotation;
         }
         else
         {

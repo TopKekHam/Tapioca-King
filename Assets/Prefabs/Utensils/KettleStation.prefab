@@ -281,6 +281,7 @@ MonoBehaviour:
   label: {fileID: 2529422903575426352}
   itemOrigin: {fileID: 7662349511097711111}
   startingKettle: {fileID: 0}
+  bubbleAudioClip: {fileID: 8300000, guid: 1cafc2fdcab657e4dbf13989b539a411, type: 3}
   kettle: {fileID: 0}
 --- !u!1 &7257864414181211669
 GameObject:

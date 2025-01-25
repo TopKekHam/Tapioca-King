@@ -79,6 +79,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     public float THROW_HOLD_THRESHOLD_IN_SECONDS = 0.33f;
     public float RAY_CAST_SIZE = 2.0f;
     public AnimationCurve ACCEL_CURVE;
+    public AudioClip takeAudioClip;
 
     float accelerationTimer = 0;
     Rigidbody rigidbody;
@@ -217,11 +218,13 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     public void HoldItem(Item item)
     {
         holdedItem = item;
+        GameManager.PlaySingle(takeAudioClip);
         UpdateHoldedItemPosition();
     }
 
     public Item ReleaseItem()
     {
+        GameManager.PlaySingle(takeAudioClip);
         var temp = holdedItem;
         holdedItem = null;
         return temp;

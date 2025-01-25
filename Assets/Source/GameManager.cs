@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnPoints;
     public PlayerComponent playerPrefab;
     public Transform entitiesOrigin;
+    public AudioSource audioSource;
 
     [HideInInspector] public List<OrderToFill> ordersToFill;
 
@@ -188,5 +189,10 @@ public class GameManager : MonoBehaviour
         }
 
         return -1;
+    }
+
+    public static void PlaySingle(AudioClip sound, float volume = 1.0f)
+    {
+        instance.audioSource.PlayOneShot(sound, volume);
     }
 }

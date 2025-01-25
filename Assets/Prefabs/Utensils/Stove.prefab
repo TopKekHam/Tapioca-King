@@ -260,6 +260,7 @@ MonoBehaviour:
   label: {fileID: 2529422903575426352}
   itemOrigin: {fileID: 7662349511097711111}
   startingPot: {fileID: 0}
+  bubbleAudioClip: {fileID: 8300000, guid: 1cafc2fdcab657e4dbf13989b539a411, type: 3}
   pot: {fileID: 0}
 --- !u!65 &1210210795506564030
 BoxCollider:

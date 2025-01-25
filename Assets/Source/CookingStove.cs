@@ -15,7 +15,9 @@ public class CookingStove : Interactable, IItemHolder
     public TMP_Text label;
     public Transform itemOrigin;
     public Item startingPot;
+    public AudioClip bubbleAudioClip;
     [HideInInspector] public Item pot;
+
 
     void Start()
     {
@@ -81,6 +83,7 @@ public class CookingStove : Interactable, IItemHolder
             }
             else if (player.holdedItem.itemType.Cookable() && pot.itemInPot == null)
             {
+                GameManager.PlaySingle(bubbleAudioClip);
                 player.GiveItemTo(pot);
             }
         }

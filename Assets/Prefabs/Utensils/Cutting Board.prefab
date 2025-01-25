@@ -52,6 +52,7 @@ MonoBehaviour:
   label: {fileID: 2623197216655669584}
   config: {fileID: 11400000, guid: 94f2ccff74b111147abe00f287bb42fb, type: 2}
   fruitOrigin: {fileID: 5731426137981074028}
+  choopSound: {fileID: 8300000, guid: 70f883e0ea20d2e47a275d91c3b09208, type: 3}
   holdedItem: {fileID: 0}
   choopCounter: 0
   choopingPlayer: {fileID: 0}
@@ -74,8 +75,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.35, z: 0}
+  m_Size: {x: 1.48, y: 0.23913363, z: 1.46}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &3208347785025012506
 Animator:
   serializedVersion: 7
@@ -186,16 +187,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6009785427531750620}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25300026}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 88704652003056894}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.6000006}
+  m_AnchoredPosition: {x: 0, y: 2.61}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5543968408033635098
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
