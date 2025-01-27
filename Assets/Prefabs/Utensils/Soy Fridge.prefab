@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052077499782033469}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01999998, y: 0.010000229, z: 0.02}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8400393625650771047}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2090290904168282757
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 883f5e6a05e68ce478447f309789e17c, type: 2}
+  - {fileID: 2100000, guid: c17e6eed3b2968545867ca43f3e7339e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 536330879261884997}
   - component: {fileID: 4739069715001353298}
   - component: {fileID: 7626164428402367436}
+  - component: {fileID: 440554933038790884}
   m_Layer: 6
   m_Name: Soy Fridge
   m_TagString: Untagged
@@ -113,14 +114,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3129532119206765784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 10.464981, y: -0.022, z: -5.25}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8400393625650771047}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &536330879261884997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,8 +141,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 2, z: 5}
-  m_Center: {x: 0, y: 0, z: 2.5}
+  m_Size: {x: 3, y: 5, z: 2}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &4739069715001353298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 3462209088727681702, guid: 22852354c1dc5bb47a1b32b7dfb60256, type: 3}
   interactAudio: {fileID: 8300000, guid: 3cdd529665f961941bd8ba28a01486ae, type: 3}
+  highlightableMesh: {fileID: 440554933038790884}
 --- !u!95 &7626164428402367436
 Animator:
   serializedVersion: 7
@@ -178,6 +180,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &440554933038790884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129532119206765784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec918cd7d339be46934cb1ecf335a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: e168a1eb7aa2dd64ead064ecde655529, type: 2}
+  meshRenderer: {fileID: 4823725301648073822}
 --- !u!1 &6155733200688696220
 GameObject:
   m_ObjectHideFlags: 0

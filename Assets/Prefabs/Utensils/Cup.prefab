@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 4002361791380544335}
   - component: {fileID: 7336417913098706316}
   - component: {fileID: 890194874831374384}
+  - component: {fileID: 8956905804538969478}
   m_Layer: 6
   m_Name: Cup
   m_TagString: Untagged
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 7336417913098706316}
+  highlightableMesh: {fileID: 8956905804538969478}
   itemType: 5
   fruitType: 2
   teaType: 0
@@ -185,8 +187,10 @@ MonoBehaviour:
     teaType: 0
   filmentsLength: 0
   itemInPot: {fileID: 0}
+  itemInKettle: {fileID: 0}
   rigidbody: {fileID: 0}
   cookingTimer: 0
+  steepingTimer: 0
   filmentParent: {fileID: 8575299793084781867}
 --- !u!135 &7336417913098706316
 SphereCollider:
@@ -231,6 +235,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8956905804538969478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517475155462909226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec918cd7d339be46934cb1ecf335a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: e168a1eb7aa2dd64ead064ecde655529, type: 2}
+  meshRenderer: {fileID: 3098959122026359491}
 --- !u!1 &3738001176930197396
 GameObject:
   m_ObjectHideFlags: 0

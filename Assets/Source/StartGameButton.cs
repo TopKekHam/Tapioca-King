@@ -19,7 +19,17 @@ public class StartGameButton : Interactable
         
         return null;
     }
-    
+
+    public override void DeHighlight()
+    {
+       
+    }
+
+    public override void Highlight()
+    {
+     
+    }
+
     public override void Interact(PlayerComponent player)
     {
         if (GameManager.instance.gameState == GameState.LOBBY)

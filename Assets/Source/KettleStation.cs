@@ -8,15 +8,20 @@ public class KettleStation : Interactable, IItemHolder
     public GameConfig gameConfig;
     public TMP_Text label;
     public Transform itemOrigin;
-    public Item startingKettle;
     public AudioClip bubbleAudioClip;
     public AudioClip doneAudioClip;
     public GameObject flames;
-    [HideInInspector] public Item kettle;
+    public HighlightableMesh highlightableMesh;
+    public Item kettle;
+
+    public Item HoldedItem => throw new NotImplementedException();
 
     void Start()
     {
-        this.HoldAction(startingKettle);
+        if (kettle != null)
+        {
+            Utils.HoldAction(this, kettle);
+        }
     }
 
     void Update()
@@ -104,5 +109,15 @@ public class KettleStation : Interactable, IItemHolder
         var temp = kettle;
         kettle = null;
         return temp;
+    }
+
+    public override void Highlight()
+    {
+        highlightableMesh.Highlight();
+    }
+
+    public override void DeHighlight()
+    {
+        highlightableMesh.DeHighlight();
     }
 }

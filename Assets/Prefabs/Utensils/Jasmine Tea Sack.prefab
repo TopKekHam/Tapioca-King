@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3977922891242207134}
   - component: {fileID: 7550403574889057189}
   m_Layer: 6
-  m_Name: Earl Grey Tea Sack
+  m_Name: Jasmine Tea Sack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee77de5b18cabc42b1374c4966b5742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 7842278038353811943, guid: 4be303afe0e0a414bb4b79ebf90cf642, type: 3}
+  itemPrefab: {fileID: 6522193097507390756, guid: 540c6258ad53bd049823da2c9cc4412d, type: 3}
   interactAudio: {fileID: 8300000, guid: 0a62fdb647e914342a48e1897c5dd776, type: 3}
   highlightableMesh: {fileID: 7550403574889057189}
 --- !u!65 &3877935682156702933
@@ -211,7 +211,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: eee4586bec1902748b545a5413627422, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 6919153947418206517, guid: 44352628c015e6c44b6912fd0634b240, type: 3}
+      objectReference: {fileID: -9208691693710679598, guid: b9e1f51a8b240984aa8565390728d717, type: 3}
     - target: {fileID: 919132149155446097, guid: eee4586bec1902748b545a5413627422, type: 3}
       propertyPath: m_Name
       value: Teabag_02

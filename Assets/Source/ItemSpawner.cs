@@ -5,7 +5,8 @@ public class ItemSpawner : Interactable
     
     public Item itemPrefab;
     public AudioClip interactAudio;
-    
+    public HighlightableMesh highlightableMesh;
+
     void Start()
     {
         
@@ -28,5 +29,15 @@ public class ItemSpawner : Interactable
                 GameManager.PlaySingle(interactAudio);
             }
         }
+    }
+
+    public override void Highlight()
+    {
+        highlightableMesh.Highlight();
+    }
+
+    public override void DeHighlight()
+    {
+        highlightableMesh.DeHighlight();
     }
 }

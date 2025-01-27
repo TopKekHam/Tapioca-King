@@ -7,10 +7,12 @@ public class ChoopingBoard : Interactable, IItemHolder
     public GameConfig config;
     public Transform fruitOrigin;
     public AudioClip choopSound;
-    [HideInInspector] public Item holdedItem = null;
+    [HideInInspector] public Item itemOnBoard = null;
     [HideInInspector] public int choopCounter = 0;
 
     [HideInInspector] public PlayerComponent choopingPlayer = null;
+
+    public Item HoldedItem => itemOnBoard;
 
     void Start()
     {
@@ -39,7 +41,7 @@ public class ChoopingBoard : Interactable, IItemHolder
 
     void UpdateChoopingCouterLabel()
     {
-        if (holdedItem == null || choopingPlayer == null)
+        if (itemOnBoard == null || choopingPlayer == null)
         {
             label.text = "";
         }
@@ -91,19 +93,29 @@ public class ChoopingBoard : Interactable, IItemHolder
 
     public bool IsItemOnBoard()
     {
-        return holdedItem != null;
+        return itemOnBoard != null;
     }
 
     public void HoldItem(Item item)
     {
-        holdedItem = item;
-        holdedItem.transform.position = fruitOrigin.position;
+        itemOnBoard = item;
+        itemOnBoard.transform.position = fruitOrigin.position;
     }
 
     public Item ReleaseItem()
     {
-        var temp = holdedItem;
-        holdedItem = null;
+        var temp = itemOnBoard;
+        itemOnBoard = null;
         return temp;
+    }
+
+    public override void Highlight()
+    {
+        
+    }
+
+    public override void DeHighlight()
+    {
+        
     }
 }

@@ -73,6 +73,7 @@ public class CupFilment
 public class Item : Interactable, IItemHolder
 {
     public Collider collider;
+    public HighlightableMesh highlightableMesh;
 
     public ItemType itemType;
     public FruitType fruitType;
@@ -89,9 +90,28 @@ public class Item : Interactable, IItemHolder
     [HideInInspector] public float cookingTimer = 0;
     [HideInInspector] public float steepingTimer = 0;
 
+
     private IItemHolder myHolder;
 
     public Transform filmentParent;
+
+    public Item HoldedItem
+    {
+        get
+        {
+            if (itemType == ItemType.POT)
+            {
+                return itemInPot;
+            }
+
+            if (itemType == ItemType.KETTLE)
+            {
+                return itemInKettle;
+            }
+
+            return null;
+        }
+    }
 
     void Awake()
     {
@@ -158,13 +178,13 @@ public class Item : Interactable, IItemHolder
     {
         if (itemType == ItemType.POT && player.IsHoldingItem())
         {
-            if (player.holdedItem.itemType.Cookable())
+            if (player.holdedItem.itemType.IsCookable())
             {
                 player.GiveItemTo(this);
                 this.itemInPot.transform.position = transform.position;
             }
         }
-        if(itemType == ItemType.KETTLE && player.IsHoldingItem())
+        if (itemType == ItemType.KETTLE && player.IsHoldingItem())
         {
             if (player.holdedItem.itemType.Steepable())
             {
@@ -172,54 +192,13 @@ public class Item : Interactable, IItemHolder
                 this.itemInPot.transform.position = transform.position;
             }
         }
-        else if (itemType == ItemType.CUP && CanAddFilment() && player.IsHoldingItem())
+        else if (itemType == ItemType.CUP && player.IsHoldingItem())
         {
-            if (player.holdedItem.itemType.IsFilment())
-            {
-                var item = player.ReleaseItem();
-                AddFilment(item.CreateFilment());
-                Destroy(item.gameObject);
-            }
-            else if (player.holdedItem.itemType == ItemType.POT
-                     && player.holdedItem.PotIsFull()
-                     && player.holdedItem.itemInPot.itemType.IsFilment())
-            {
-                var item = player.holdedItem.ReleaseItem();
-                AddFilment(item.CreateFilment());
-                Destroy(item.gameObject);
-            }
-            else if (player.holdedItem.itemType == ItemType.KETTLE
-                     && player.holdedItem.KettleIsFull()
-                     && player.holdedItem.itemInKettle.itemType.IsFilment())
-            {
-                var item = player.holdedItem.ReleaseItem();
-                AddFilment(item.CreateFilment());
-                Destroy(item.gameObject);
-            }
-            else
-            {
-                // can't fill
-            }
+            Utils.TryFill(this, player);
         }
         else if (player.IsHoldingItem() && player.holdedItem.itemType == ItemType.CUP)
         {
-            if (itemType.IsFilment())
-            {
-                player.holdedItem.AddFilment(CreateFilment());
-                Destroy(gameObject);
-            }
-            else if (itemType == ItemType.POT && PotIsFull())
-            {
-                var item = ReleaseItem();
-                player.holdedItem.AddFilment(item.CreateFilment());
-                Destroy(item.gameObject);
-            }
-            else if (itemType == ItemType.KETTLE && KettleIsFull())
-            {
-                var item = ReleaseItem();
-                player.holdedItem.AddFilment(item.CreateFilment());
-                Destroy(item.gameObject);
-            }
+            Utils.TryFill(player.holdedItem, this);
         }
         else if (IsHolded() == false && player.IsHoldingItem() == false)
         {
@@ -233,6 +212,9 @@ public class Item : Interactable, IItemHolder
         if (itemType == ItemType.POT)
         {
             itemInPot = item;
+            item.transform.parent = filmentParent;
+            item.transform.localRotation = Quaternion.identity;
+            item.transform.localPosition = Vector3.zero;
         }
         else if (itemType == ItemType.KETTLE)
         {
@@ -296,11 +278,21 @@ public class Item : Interactable, IItemHolder
         var config = GameManager.instance.gameConfig;
 
         var obj = config.InstantiateFilment(filmentsLength, filment);
-        
-        
+
+
         obj.transform.parent = filmentParent;
         obj.transform.localPosition = new Vector3(0, filmentHeightOffest[filmentsLength], 0);
 
         filmentsLength += 1;
+    }
+
+    public override void Highlight()
+    {
+        highlightableMesh.Highlight();
+    }
+
+    public override void DeHighlight()
+    {
+        highlightableMesh.Highlight();
     }
 }

@@ -1,12 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 public interface IItemHolder
 {
     void HoldItem(Item item);
     Item ReleaseItem();
+    Item HoldedItem { get; }
 }
 
 public class CookingStove : Interactable, IItemHolder
@@ -14,49 +16,60 @@ public class CookingStove : Interactable, IItemHolder
     public GameConfig gameConfig;
     public TMP_Text label;
     public Transform itemOrigin;
-    public Item startingPot;
     public AudioClip bubbleAudioClip;
     public AudioClip doneAudioClip;
     public GameObject flames;
-    [HideInInspector] public Item pot;
+    public HighlightableMesh highlightableMesh;
+    public Item pot;
 
+    public Item HoldedItem => pot;
 
     void Start()
     {
-        this.HoldAction(startingPot);
+        if (pot != null)
+        {
+            Utils.HoldAction(this, pot);
+        }
     }
 
     void Update()
     {
-        flames.SetActive(pot != null && pot.itemInPot != null && pot.itemInPot.itemType.Cookable());
+        flames.SetActive(pot != null && pot.itemInPot != null && pot.itemInPot.itemType.IsCookable());
 
         if (pot != null)
         {
-            if (pot.itemInPot != null && pot.itemInPot.itemType.Cookable())
+            if (pot.itemInPot != null)
             {
 
-                bool donePre = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime; ;
-                pot.itemInPot.cookingTimer += Time.deltaTime;
-                bool done = pot.itemInPot.cookingTimer >= gameConfig.fruitCookTime;
-                label.text = $"{(done ? "DONE" : "")} {pot.itemInPot.cookingTimer:N2}";
-
-                bool doneThisFrame = donePre == false && done;
-                if (doneThisFrame)
+                if (pot.itemInPot.itemType.IsCookable())
                 {
-                    GameManager.PlaySingle(doneAudioClip);
-                    var fruit = pot.itemInPot;
-                    var cookedVersion = gameConfig.GetDoneVersion(pot.itemInPot).gameObject;
-                    var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();
-                    Utils.HoldAction(this.pot, cookedItem);
-                    Destroy(fruit.gameObject);
+                    pot.itemInPot.cookingTimer += Time.deltaTime;
+                    label.text = $"{pot.itemInPot.cookingTimer:N2}";
+
+                    if (pot.itemInPot.cookingTimer > gameConfig.fruitCookTime)
+                    {
+                        GameManager.PlaySingle(doneAudioClip);
+                        var fruit = pot.itemInPot;
+                        var cookedVersion = gameConfig.GetDoneVersion(pot.itemInPot).gameObject;
+                        var cookedItem = Instantiate(cookedVersion).GetComponent<Item>();
+                        Utils.HoldAction(this.pot, cookedItem);
+                        Destroy(fruit.gameObject);
+
+                    }
                 }
-
-                if (pot.itemInPot.cookingTimer > gameConfig.burnTime)
+                else if (pot.itemInPot.itemType.IsCooked())
                 {
-                    var fruit = pot.itemInPot;
-                    var coalItem = Instantiate(gameConfig.coal.gameObject).GetComponent<Item>();
-                    Utils.HoldAction(this.pot, coalItem);
-                    Destroy(fruit.gameObject);
+                    pot.itemInPot.cookingTimer += Time.deltaTime;
+                    label.text = $"DONE {pot.itemInPot.cookingTimer:N2}";
+
+                    if (pot.itemInPot.cookingTimer > gameConfig.burnTime)
+                    {
+                        var cookedItem = pot.itemInPot;
+                        var coalItem = Instantiate(gameConfig.coal.gameObject).GetComponent<Item>();
+                        Utils.HoldAction(this.pot, coalItem);
+                        Destroy(cookedItem.gameObject);
+                        label.text = "";
+                    }
                 }
             }
             else
@@ -72,7 +85,7 @@ public class CookingStove : Interactable, IItemHolder
 
     public override void Interact(PlayerComponent player)
     {
-        if (pot == null && player.IsHoldingItem())
+        if (GotPot() == false && player.IsHoldingItem())
         {
             if (player.holdedItem.itemType == ItemType.POT)
             {
@@ -81,24 +94,39 @@ public class CookingStove : Interactable, IItemHolder
                 pot.SetHoldedBy(this);
             }
         }
-        else if (pot != null)
+        else if (GotPot())
         {
-            if (player.IsHoldingItem() == false)
+            if (player.IsHoldingItem())
+            {
+                if (player.holdedItem.itemType == ItemType.CUP && pot.PotIsFull())
+                {
+                    Utils.TryFill(player.holdedItem, this);
+                }
+                else if (player.holdedItem.itemType.IsCookable() && pot.itemInPot == null)
+                {
+                    GameManager.PlaySingle(bubbleAudioClip);
+                    player.GiveItemTo(pot);
+                }
+            }
+            else
             {
                 this.GiveItemTo(player);
             }
-            else if (player.holdedItem.itemType.Cookable() && pot.itemInPot == null)
-            {
-                GameManager.PlaySingle(bubbleAudioClip);
-                player.GiveItemTo(pot);
-            }
         }
+    }
+
+    public bool GotPot()
+    {
+        return pot != null;
     }
 
     public void HoldItem(Item item)
     {
         pot = item;
-        pot.transform.position = itemOrigin.position;
+        pot.transform.parent = itemOrigin;
+        pot.transform.localPosition = Vector3.zero;
+        pot.transform.localRotation = Quaternion.identity;
+
         pot.rigidbody.linearVelocity = Vector3.zero;
         pot.rigidbody.isKinematic = true;
     }
@@ -109,5 +137,15 @@ public class CookingStove : Interactable, IItemHolder
         var temp = pot;
         pot = null;
         return temp;
+    }
+
+    public override void Highlight()
+    {
+        highlightableMesh.Highlight();
+    }
+
+    public override void DeHighlight()
+    {
+        highlightableMesh.DeHighlight();
     }
 }

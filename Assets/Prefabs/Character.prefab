@@ -1692,6 +1692,7 @@ MonoBehaviour:
   THROW_MAX_HOLD_IN_SECONDS: 2
   THROW_HOLD_THRESHOLD_IN_SECONDS: 0.33
   RAY_CAST_SIZE: 2
+  TURN_TIME: 0.25
   ACCEL_CURVE:
     serializedVersion: 2
     m_Curve:

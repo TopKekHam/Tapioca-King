@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9059098246478030314}
   - component: {fileID: 9110647058815586533}
   - component: {fileID: 3208347785025012506}
+  - component: {fileID: 786506116999866917}
   m_Layer: 6
   m_Name: Cutting Board
   m_TagString: Untagged
@@ -75,7 +76,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.48, y: 0.23913363, z: 1.46}
+  m_Size: {x: 1.08, y: 0.09, z: 1.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &3208347785025012506
 Animator:
@@ -99,6 +100,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &786506116999866917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655729639007084369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec918cd7d339be46934cb1ecf335a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: e168a1eb7aa2dd64ead064ecde655529, type: 2}
+  meshRenderer: {fileID: 8623062656077801594}
 --- !u!1 &3440481717709531378
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +380,7 @@ Transform:
   m_GameObject: {fileID: 8079746156432207113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.05737016}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

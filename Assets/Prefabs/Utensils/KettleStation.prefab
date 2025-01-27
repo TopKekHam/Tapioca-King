@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 5263035719052413754}
   - component: {fileID: 1210210795506564030}
   - component: {fileID: 2240134194772451631}
+  - component: {fileID: 2042373463718218178}
   m_Layer: 6
   m_Name: KettleStation
   m_TagString: Untagged
@@ -264,8 +265,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.4814434, z: 1}
+  m_Center: {x: 0, y: 0.2407217, z: 0}
 --- !u!114 &2240134194772451631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,11 +282,25 @@ MonoBehaviour:
   gameConfig: {fileID: 11400000, guid: 94f2ccff74b111147abe00f287bb42fb, type: 2}
   label: {fileID: 2529422903575426352}
   itemOrigin: {fileID: 7662349511097711111}
-  startingKettle: {fileID: 0}
   bubbleAudioClip: {fileID: 8300000, guid: 766fed68c5488974aad86055dfe937e1, type: 3}
   doneAudioClip: {fileID: 8300000, guid: f546f6b29e707e94ba3044256fed3e5d, type: 3}
   flames: {fileID: 2138027849737202591}
+  highlightableMesh: {fileID: 2042373463718218178}
   kettle: {fileID: 0}
+--- !u!114 &2042373463718218178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890899328624843249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec918cd7d339be46934cb1ecf335a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: e168a1eb7aa2dd64ead064ecde655529, type: 2}
+  meshRenderer: {fileID: 19387478443786520}
 --- !u!1 &7257864414181211669
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 7257864414181211669}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.168, z: -0}
+  m_LocalPosition: {x: 0, y: 0.462, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 8982639914176537004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.24072175, z: 0}
   m_LocalScale: {x: 32.115433, y: 32.115433, z: 32.115433}
   m_ConstrainProportionsScale: 0
   m_Children: []

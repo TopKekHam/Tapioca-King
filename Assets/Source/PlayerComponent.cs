@@ -15,59 +15,6 @@ public interface IPlayerInput
     bool IsAction2(out float timer);
 }
 
-public class PlayerKeyboardInput : IPlayerInput
-{
-    private float throwTimeStart;
-
-    public Vector3 GetMovementDirection()
-    {
-        Vector3 direction = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            direction.y += 1;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            direction.y -= 1;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            direction.x -= 1;
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            direction.x += 1;
-        }
-
-        return direction;
-    }
-
-    public bool IsInteracting()
-    {
-        return Input.GetKeyDown(KeyCode.Space);
-    }
-
-    public bool IsAction2(out float timer)
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            throwTimeStart = Time.fixedTime;
-        }
-
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            timer = Time.fixedTime - throwTimeStart;
-            return true;
-        }
-
-        timer = 0;
-        return false;
-    }
-}
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerComponent : MonoBehaviour, IItemHolder
@@ -78,6 +25,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     public float THROW_MAX_HOLD_IN_SECONDS = 2.0f;
     public float THROW_HOLD_THRESHOLD_IN_SECONDS = 0.33f;
     public float RAY_CAST_SIZE = 2.0f;
+    public float TURN_TIME;
     public AnimationCurve ACCEL_CURVE;
     public AudioClip takeAudioClip;
 
@@ -93,9 +41,13 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
     [SerializeField] Transform characterGFX;
     [SerializeField] Transform itemPos;
-    private float turnTimer;
-    private bool right=true;
+    private float turnTimer = 0;
+    private bool right = true;
     Quaternion savedRot;
+
+    Interactable lastInteractable;
+
+    public Item HoldedItem => holdedItem;
 
     void Start()
     {
@@ -108,6 +60,26 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     void Update()
     {
         var gotInteractable = TryGetNearestInteractable(out var interactable);
+
+        if (gotInteractable)
+        {
+            if (lastInteractable != null && lastInteractable != interactable)
+            {
+                lastInteractable.DeHighlight();
+            }
+
+            interactable.Highlight();
+            lastInteractable = interactable;
+        }
+        else
+        {
+            if (lastInteractable != null)
+            {
+                lastInteractable.DeHighlight();
+            }
+
+            lastInteractable = null;
+        }
 
         if (input.IsInteracting())
         {
@@ -158,6 +130,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
         holdedItem.rigidbody.AddForce(THROW_POWER * powerNormal * powerVector);
 
         characterAnim.SetTrigger("Throw");
+        holdedItem.transform.parent = transform.root;
         //characterAnim.SetBool("Holding", false);
     }
 
@@ -201,8 +174,8 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         var moveDir = input.GetMovementDirection();
 
-        turnTimer += Time.deltaTime *1.5f;
-        if (moveDir.x>0)
+        turnTimer += Time.fixedDeltaTime;
+        if (moveDir.x > 0)
         {
             //Vector3(329.947937, 18.3123474, 350.589386)
             if (!right)
@@ -212,7 +185,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
                 savedRot = characterGFX.rotation;
             }
         }
-        else if (moveDir.x<0)
+        else if (moveDir.x < 0)
         {
             if (right)
             {
@@ -224,11 +197,11 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
 
         if (right)
         {
-            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 72, 0), turnTimer);
+            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 72, 0), turnTimer / TURN_TIME);
         }
         else
         {
-            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 252, 0), turnTimer);
+            characterGFX.rotation = Quaternion.Lerp(savedRot, Quaternion.Euler(0, 252, 0), turnTimer / TURN_TIME);
         }
 
         if (moveDir != Vector3.zero && IsChooping() == false)
@@ -260,6 +233,7 @@ public class PlayerComponent : MonoBehaviour, IItemHolder
     {
         holdedItem = item;
         GameManager.PlaySingle(takeAudioClip);
+        holdedItem.transform.parent = transform;
         UpdateHoldedItemPosition();
         characterAnim.SetBool("Holding", true);
     }

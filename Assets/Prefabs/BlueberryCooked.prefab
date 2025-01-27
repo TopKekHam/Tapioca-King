@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 1945732471698874283}
+  highlightableMesh: {fileID: 0}
   itemType: 9
   fruitType: 2
   teaType: 0
@@ -752,15 +753,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5389152
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5744158
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.853097
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -795,12 +796,16 @@ PrefabInstance:
       value: empty_cylinder
       objectReference: {fileID: 0}
     - target: {fileID: 7508540987675940040, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508540987675940040, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.567
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7508540987675940040, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.853
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7508540987675940040, guid: 6a09db3040059714f80b3b7bcf19681e, type: 3}
       propertyPath: m_LocalRotation.w

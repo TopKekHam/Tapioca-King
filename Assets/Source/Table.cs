@@ -2,37 +2,67 @@ using UnityEngine;
 
 public class Table : Interactable, IItemHolder
 {
-    [HideInInspector]
-    public Item heldItem = null;
+
+    public Item itemOnTable = null;
 
     public Transform itemPosition;
-    
+
+    public Item HoldedItem => itemOnTable;
+
+    void Start()
+    {
+        if (itemOnTable != null)
+        {
+            Utils.HoldAction(this, itemOnTable);
+        }
+    }
+
     public override void Interact(PlayerComponent player)
     {
-        if (player.IsHoldingItem() && IsHoldingItem() == false)
+        if (player.IsHoldingItem())
         {
-            player.GiveItemTo(this);    
-        } else if (player.IsHoldingItem() == false && IsHoldingItem())
+            if (ItemOnTable())
+            {
+                itemOnTable.Interact(player);
+            }
+            else
+            {
+                player.GiveItemTo(this);
+            }
+        }
+        else if (player.IsHoldingItem() == false && ItemOnTable())
         {
             this.GiveItemTo(player);
         }
     }
 
-    public bool IsHoldingItem()
+    public bool ItemOnTable()
     {
-        return heldItem != null;
+        return itemOnTable != null;
     }
 
     public void HoldItem(Item item)
     {
-        heldItem = item;
-        heldItem.transform.position = itemPosition.position;
+        itemOnTable = item;
+        itemOnTable.transform.parent = itemPosition;
+        itemOnTable.transform.localRotation = Quaternion.identity;
+        itemOnTable.transform.localPosition = Vector3.zero;
     }
 
     public Item ReleaseItem()
     {
-        var temp = heldItem;
-       heldItem = null;
-       return temp;
+        var temp = itemOnTable;
+        itemOnTable = null;
+        return temp;
+    }
+
+    public override void Highlight()
+    {
+        
+    }
+
+    public override void DeHighlight()
+    {
+
     }
 }

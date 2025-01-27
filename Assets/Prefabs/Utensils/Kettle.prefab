@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 8218202294327018399}
   - component: {fileID: 8352790321199307667}
   - component: {fileID: 1410048052167340423}
+  - component: {fileID: 2888166850309808281}
   m_Layer: 6
   m_Name: Kettle
   m_TagString: Untagged
@@ -145,7 +146,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.79, y: 1, z: 0.66}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8352790321199307667
 MonoBehaviour:
@@ -160,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 8218202294327018399}
+  highlightableMesh: {fileID: 2888166850309808281}
   itemType: 7
   fruitType: 0
   teaType: 0
@@ -196,7 +198,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5166523899791911117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f52c125b4ceaaf44b881efe0e4b8ea79, type: 2}
   m_CullingMode: 0
@@ -210,6 +212,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2888166850309808281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166523899791911117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec918cd7d339be46934cb1ecf335a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: e168a1eb7aa2dd64ead064ecde655529, type: 2}
+  meshRenderer: {fileID: 2202390462875401346}
 --- !u!1001 &3278394787506041123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,6 +290,11 @@ PrefabInstance:
       addedObject: {fileID: 3362061280843139754}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce678f6d627a23741a7142e3d75f85d6, type: 3}
+--- !u!23 &2202390462875401346 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5481086606260613727, guid: ce678f6d627a23741a7142e3d75f85d6, type: 3}
+  m_PrefabInstance: {fileID: 3278394787506041123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3095534035640211144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce678f6d627a23741a7142e3d75f85d6, type: 3}
